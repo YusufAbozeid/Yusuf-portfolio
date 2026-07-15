@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yusuf Abozeid | AI Developer</title>
-    <!-- Font Awesome for Icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ---------- RESET & BASE ---------- */
@@ -16,10 +16,11 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0d1117;
+            background: #0b0e14;
             color: #c9d1d9;
             line-height: 1.6;
             padding: 2rem 1rem;
+            overflow-x: hidden;
         }
 
         .container {
@@ -27,11 +28,23 @@
             margin: 0 auto;
         }
 
+        /* ---------- SCROLL ANIMATIONS (Fade In Up) ---------- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* ---------- HERO SECTION ---------- */
         .hero {
             text-align: center;
             padding: 2rem 0 3rem;
-            border-bottom: 1px solid #30363d;
+            border-bottom: 1px solid rgba(48, 54, 61, 0.6);
         }
 
         .avatar {
@@ -40,27 +53,58 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #00c7b7;
-            box-shadow: 0 0 30px rgba(0, 199, 183, 0.3);
+            box-shadow: 0 0 40px rgba(0, 199, 183, 0.25);
             margin-bottom: 1.2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .avatar:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 0 60px rgba(0, 199, 183, 0.4);
         }
 
         .hero h1 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             font-weight: 700;
-            color: #f0f6fc;
+            background: linear-gradient(135deg, #f0f6fc 0%, #00c7b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             letter-spacing: -0.5px;
         }
 
-        .hero .subtitle {
-            font-size: 1.2rem;
+        /* ---------- TYPING ANIMATION ---------- */
+        .typing-wrapper {
+            height: 2.5rem;
+            margin-top: 0.2rem;
+        }
+        .typing-text {
+            font-size: 1.3rem;
+            font-weight: 500;
             color: #8b949e;
-            margin-top: 0.3rem;
+        }
+        .typing-text .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.3rem;
+            background: #00c7b7;
+            margin-left: 4px;
+            animation: blink 0.8s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
         }
 
         .hero .location {
             font-size: 1rem;
             color: #8b949e;
-            margin-top: 0.2rem;
+            margin-top: 0.5rem;
         }
         .hero .location i {
             color: #00c7b7;
@@ -80,24 +124,25 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: #21262d;
-            padding: 0.4rem 1rem;
+            background: rgba(33, 38, 45, 0.7);
+            backdrop-filter: blur(6px);
+            padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 500;
             color: #c9d1d9;
             text-decoration: none;
-            border: 1px solid #30363d;
-            transition: all 0.2s ease;
+            border: 1px solid rgba(48, 54, 61, 0.5);
+            transition: all 0.3s ease;
         }
         .badge:hover {
             border-color: #00c7b7;
-            background: #161b22;
-            transform: translateY(-2px);
+            background: rgba(0, 199, 183, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 199, 183, 0.15);
         }
         .badge i {
             color: #00c7b7;
-            font-size: 1rem;
         }
         .badge .gpa-color {
             color: #4CAF50;
@@ -105,52 +150,88 @@
 
         /* ---------- SECTIONS ---------- */
         section {
-            margin: 3rem 0;
+            margin: 4rem 0;
         }
 
         h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 600;
             color: #f0f6fc;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #21262d;
-            padding-bottom: 0.5rem;
+            margin-bottom: 1.8rem;
+            border-bottom: 2px solid rgba(33, 38, 45, 0.8);
+            padding-bottom: 0.6rem;
+            display: inline-block;
+            background: linear-gradient(135deg, #f0f6fc, #00c7b7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         h2 i {
             color: #00c7b7;
             margin-right: 10px;
+            -webkit-text-fill-color: #00c7b7;
         }
 
         .about-text {
             font-size: 1.1rem;
             color: #b1bac4;
             max-width: 850px;
+            background: rgba(22, 27, 34, 0.5);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            border-left: 4px solid #00c7b7;
+            backdrop-filter: blur(4px);
         }
         .about-text strong {
             color: #f0f6fc;
         }
 
-        /* ---------- SKILLS (TAGS) ---------- */
+        /* ---------- SKILL BARS ---------- */
         .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
         }
-        .skill-tag {
-            background: #21262d;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
+        .skill-item {
+            background: rgba(22, 27, 34, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 0.8rem 1.2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(48, 54, 61, 0.4);
+            transition: all 0.3s;
+        }
+        .skill-item:hover {
+            border-color: #00c7b7;
+            transform: scale(1.02);
+        }
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
             font-size: 0.9rem;
             font-weight: 500;
-            border: 1px solid #30363d;
             color: #c9d1d9;
+            margin-bottom: 0.3rem;
         }
-        .skill-tag i {
+        .skill-item .skill-label i {
             color: #00c7b7;
             margin-right: 6px;
         }
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: #21262d;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #00c7b7, #4facfe);
+            border-radius: 10px;
+            transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
 
-        /* ---------- PROJECT CARDS ---------- */
+        /* ---------- PROJECT CARDS (GLASSMORPHISM) ---------- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -158,21 +239,55 @@
         }
 
         .project-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 16px;
+            background: rgba(22, 27, 34, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(48, 54, 61, 0.4);
+            border-radius: 20px;
             padding: 1.8rem 1.5rem;
-            transition: all 0.25s ease;
+            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
+            position: relative;
+            overflow: hidden;
         }
+        /* Glow effect on hover */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #00c7b7, #4facfe, #00c7b7);
+            background-size: 300% 300%;
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.6s ease;
+        }
+        .project-card:hover::before {
+            opacity: 1;
+            animation: gradientMove 3s ease infinite;
+        }
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .project-card:hover {
-            border-color: #00c7b7;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transform: translateY(-8px) scale(1.01);
+            border-color: transparent;
         }
 
         .project-card .icon {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
+            display: inline-block;
         }
         .project-card h3 {
             font-size: 1.5rem;
@@ -203,19 +318,20 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            padding: 0.3rem 1rem;
+            padding: 0.3rem 1.2rem;
             border-radius: 30px;
             font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid #30363d;
+            border: 1px solid rgba(48, 54, 61, 0.5);
             color: #c9d1d9;
-            background: #0d1117;
-            transition: 0.2s;
+            background: rgba(13, 17, 23, 0.6);
+            transition: 0.3s ease;
         }
         .project-links a:hover {
             border-color: #00c7b7;
-            background: #161b22;
+            background: rgba(0, 199, 183, 0.15);
+            box-shadow: 0 0 20px rgba(0, 199, 183, 0.15);
         }
         .project-links a i {
             color: #00c7b7;
@@ -224,17 +340,18 @@
             color: #4CAF50;
         }
 
-        /* ---------- YOUTUBE EMBED ---------- */
+        /* ---------- VIDEO EMBED ---------- */
         .video-wrapper {
             margin-top: 1.2rem;
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
-            border: 1px solid #30363d;
+            border: 1px solid rgba(48, 54, 61, 0.4);
             background: #000;
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
             height: 0;
         }
+        .video-wrapper video,
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -246,10 +363,16 @@
 
         /* ---------- LEADERSHIP ---------- */
         .leadership-box {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 16px;
+            background: rgba(22, 27, 34, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(48, 54, 61, 0.4);
+            border-radius: 20px;
             padding: 1.8rem 2rem;
+            transition: all 0.3s;
+        }
+        .leadership-box:hover {
+            border-color: #00c7b7;
+            box-shadow: 0 0 30px rgba(0, 199, 183, 0.05);
         }
         .leadership-box h3 {
             color: #f0f6fc;
@@ -268,7 +391,7 @@
         footer {
             margin-top: 4rem;
             padding-top: 2rem;
-            border-top: 1px solid #30363d;
+            border-top: 1px solid rgba(48, 54, 61, 0.4);
             text-align: center;
             color: #8b949e;
             font-size: 0.9rem;
@@ -280,139 +403,247 @@
         /* ---------- RESPONSIVE ---------- */
         @media (max-width: 600px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .projects-grid {
                 grid-template-columns: 1fr;
             }
             .badges {
-                gap: 0.5rem;
+                gap: 0.4rem;
             }
             .badge {
                 font-size: 0.75rem;
                 padding: 0.3rem 0.8rem;
+            }
+            .about-text {
+                padding: 1rem;
+            }
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- ==================== HERO ==================== -->
-    <header class="hero">
-        <img class="avatar"
-             src="https://github.com/user-attachments/assets/e034b63e-6180-4c28-9953-9c156ee6050a"
-             alt="Yusuf Abozeid" />
+        <!-- ==================== HERO ==================== -->
+        <header class="hero fade-up visible">
+            <img class="avatar"
+            src="https://github.com/user-attachments/assets/e034b63e-6180-4c28-9953-9c156ee6050a"
+            alt="Yusuf Abozeid" />
 
-        <h1>Yusuf Adel Abouzeid</h1>
-        <p class="subtitle">AI Developer &bull; Computer Science Student @ FUE</p>
-        <p class="location"><i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp; <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com</p>
+            <h1>Yusuf Adel Abouzeid</h1>
 
-        <div class="badges">
-            <a href="https://www.linkedin.com/in/yusufabozeid?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="badge" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-            <a href="https://github.com/YusufAbozeid" class="badge" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            <a href="#" class="badge"><i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span></a>
-        </div>
-    </header>
-
-    <!-- ==================== ABOUT ==================== -->
-    <section>
-        <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
-        <p class="about-text">
-            Results-driven Artificial Intelligence Specialist with hands-on expertise in Natural Language Processing
-            (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based
-            platforms and Arabic fake news detection using AraBERT. Certified by NVIDIA DLI and ITI in
-            Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the
-            gap between technical innovation and real-world deployment.
-        </p>
-    </section>
-
-    <!-- ==================== SKILLS ==================== -->
-    <section>
-        <h2><i class="fas fa-code"></i> Technical Skills</h2>
-        <div class="skills-grid">
-            <span class="skill-tag"><i class="fab fa-python"></i> Python (Advanced)</span>
-            <span class="skill-tag"><i class="fas fa-brain"></i> PyTorch</span>
-            <span class="skill-tag"><i class="fas fa-language"></i> AraBERT</span>
-            <span class="skill-tag"><i class="fas fa-eye"></i> OpenCV</span>
-            <span class="skill-tag"><i class="fas fa-robot"></i> Hugging Face</span>
-            <span class="skill-tag"><i class="fab fa-linux"></i> Linux / Git</span>
-            <span class="skill-tag"><i class="fas fa-database"></i> Docker</span>
-            <span class="skill-tag"><i class="fas fa-code"></i> C++</span>
-        </div>
-    </section>
-
-    <!-- ==================== PROJECTS ==================== -->
-    <section>
-        <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
-
-        <div class="projects-grid">
-
-            <!-- Card 1: Fact Forge -->
-            <div class="project-card">
-                <div class="icon">⚡</div>
-                <h3>Fact Forge</h3>
-                <p>
-                    An end-to-end AI-powered platform for real-time fact-checking and claim verification.
-                    Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. The project
-                    is fully deployed and accessible for interactive testing.
-                </p>
-                <div class="project-links">
-                    <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
-                    <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                </div>
-
-                <!-- Embedded YouTube Video -->
-                <div class="video-wrapper">
-                    <iframe 
-                        src="https://www.youtube.com/embed/Cqy3H0qDnRo" 
-                        title="Fact Forge Demo" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+            <!-- Typing Animation -->
+            <div class="typing-wrapper">
+                <span class="typing-text" id="typed-text"></span><span class="cursor"></span>
             </div>
 
-            <!-- Card 2: Mesdag AI -->
-            <div class="project-card">
-                <div class="icon">🧠</div>
-                <h3>Mesdag AI</h3>
-                <p>
-                    An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
-                    Leverages deep linguistic analysis to effectively combat misinformation and promote
-                    digital literacy across the Arab world.
-                </p>
-                <div class="collab"><i class="fas fa-users"></i> Collaborated with Ibrahim Abdelsattar</div>
-                <div class="project-links">
-                    <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank"><i class="fab fa-github"></i> Repository</a>
+            <p class="location"><i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp; <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com</p>
+
+            <div class="badges">
+                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="#" class="badge"><i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span></a>
+            </div>
+        </header>
+
+        <!-- ==================== ABOUT ==================== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
+            <div class="about-text">
+                Results-driven <strong>Artificial Intelligence Specialist</strong> with hands-on expertise in Natural Language Processing (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based platforms and Arabic fake news detection using AraBERT. Certified by NVIDIA DLI and ITI in Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the gap between technical innovation and real-world deployment.
+            </div>
+        </section>
+
+        <!-- ==================== SKILLS (with Animated Bars) ==================== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+            <div class="skills-grid" id="skillsContainer">
+                <!-- Each skill item has a data-percent for the bar width -->
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fab fa-python"></i> Python</span> <span>90%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-brain"></i> PyTorch</span> <span>85%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-language"></i> AraBERT</span> <span>80%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-eye"></i> OpenCV</span> <span>75%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="75"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-robot"></i> Hugging Face</span> <span>85%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fab fa-linux"></i> Linux / Git</span> <span>80%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-database"></i> Docker</span> <span>70%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-label"><span><i class="fas fa-code"></i> C++</span> <span>65%</span></div>
+                    <div class="skill-bar"><div class="fill" data-width="65"></div></div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- ==================== PROJECTS ==================== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
 
-    <!-- ==================== LEADERSHIP ==================== -->
-    <section>
-        <h2><i class="fas fa-trophy"></i> Leadership</h2>
-        <div class="leadership-box">
-            <h3><i class="fas fa-chalkboard-teacher"></i> GDG FUE Campus Co-organizer</h3>
-            <p>
-                Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
-                at Future University. Focused on bridging the gap between academic knowledge and industry
-                practices by introducing students to modern AI stacks, cloud computing, and collaborative
-                development workflows.
-            </p>
-        </div>
-    </section>
+            <div class="projects-grid">
 
-    <!-- ==================== FOOTER ==================== -->
-    <footer>
-        &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
-    </footer>
+                <!-- Card 1: Fact Forge -->
+                <div class="project-card">
+                    <div class="icon">⚡</div>
+                    <h3>Fact Forge</h3>
+                    <p>
+                        An end-to-end AI-powered platform for real-time fact-checking and claim verification.
+                        Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. The project
+                        is fully deployed and accessible for interactive testing.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                    </div>
 
-</div>
-<!-- /container -->
+                    <!-- Local Video File (Upload your file as 'demo.mp4' in the same folder) -->
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <!-- إذا عايز تستخدم يوتيوب تاني، استبدل الـ video tag بيه:
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/Cqy3H0qDnRo" allowfullscreen></iframe>
+                    </div>
+                    -->
+                </div>
+
+                <!-- Card 2: Mesdag AI -->
+                <div class="project-card">
+                    <div class="icon">🧠</div>
+                    <h3>Mesdag AI</h3>
+                    <p>
+                        An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
+                        Leverages deep linguistic analysis to effectively combat misinformation and promote
+                        digital literacy across the Arab world.
+                    </p>
+                    <div class="collab"><i class="fas fa-users"></i> Collaborated with Ibrahim Abdelsattar</div>
+                    <div class="project-links">
+                        <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank"><i class="fab fa-github"></i> Repository</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ==================== LEADERSHIP ==================== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-trophy"></i> Leadership</h2>
+            <div class="leadership-box">
+                <h3><i class="fas fa-chalkboard-teacher"></i> GDG FUE Campus Co-organizer</h3>
+                <p>
+                    Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
+                    at Future University. Focused on bridging the gap between academic knowledge and industry
+                    practices by introducing students to modern AI stacks, cloud computing, and collaborative
+                    development workflows.
+                </p>
+            </div>
+        </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer>
+            &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
+        </footer>
+
+    </div>
+    <!-- /container -->
+
+    <!-- ==================== SCRIPTS (Typing + Scroll Animations) ==================== -->
+    <script>
+        // ----- 1. TYPING EFFECT -----
+        const typedTextElement = document.getElementById('typed-text');
+        const roles = [
+            'AI Developer',
+            'NLP Specialist',
+            'Computer Vision Enthusiast',
+            'Open Source Contributor'
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 120;
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            if (!isDeleting) {
+                // Typing
+                typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentRole.length) {
+                    isDeleting = true;
+                    typingSpeed = 2000; // pause before deleting
+                } else {
+                    typingSpeed = 80 + Math.random() * 60;
+                }
+            } else {
+                // Deleting
+                typedTextElement.textContent = currentRole.substring(0, charIndex);
+                charIndex--;
+                if (charIndex < 0) {
+                    isDeleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    typingSpeed = 200;
+                } else {
+                    typingSpeed = 40 + Math.random() * 40;
+                }
+            }
+            setTimeout(typeEffect, typingSpeed);
+        }
+        // Start typing when page loads
+        window.addEventListener('load', typeEffect);
+
+        // ----- 2. SCROLL ANIMATIONS (Intersection Observer) -----
+        const fadeElements = document.querySelectorAll('.fade-up');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // If it's a skill bar, animate the width
+                    const fills = entry.target.querySelectorAll('.fill');
+                    fills.forEach(fill => {
+                        const width = fill.getAttribute('data-width');
+                        if (width) {
+                            fill.style.width = width + '%';
+                        }
+                    });
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Also manually trigger for skills container to animate bars if visible on load
+        // We let the observer handle it, but we need to ensure if they are already visible, they animate.
+        // The observer will fire immediately for visible elements.
+    </script>
 
 </body>
 </html>
