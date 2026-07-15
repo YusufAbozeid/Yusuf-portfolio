@@ -4,7 +4,7 @@
 <!-- 1. REPLACE THE URL BELOW WITH YOUR PHOTO LINK -->
 <!-- ============================================= -->
 <p align="center">
-  <img src="YOUR_IMAGE_URL" alt="Yusuf Abozeid" width="160" style="border-radius: 50%;" />
+  <img src="C:\Users\Mayada AbouZeid\Downloads\WhatsApp Image 2025-09-27 at 19.48.39.jpeg" alt="Yusuf Abozeid" width="160" style="border-radius: 50%;" />
 </p>
 
 # Yusuf Adel Abouzeid
