@@ -16,7 +16,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]([https://linkedin.com/in/yourprofile](https://www.linkedin.com/in/yusufabozeid?utm_source=share_via&utm_content=profile&utm_medium=member_ios))
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YusufAbozeid)
 [![GPA](https://img.shields.io/badge/GPA-3.38-4CAF50?style=for-the-badge&logo=bookstack&logoColor=white)](https://fue.edu.eg)
-[![Focus](https://img.shields.io/badge/Focus-NLP_&_Computer_Vision-blue?style=for-the-badge&logo=python&logoColor=white)](https://github.com/YusufAbozeid)
+
 
 </div>
 
