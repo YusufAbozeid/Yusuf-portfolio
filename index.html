@@ -21,11 +21,10 @@
             padding: 2rem 1rem;
             overflow-x: hidden;
             min-height: 200vh;
-            /* عشان التمرير يبقى طويل كفاية */;
             position: relative;
         }
 
-        /* ---------- BACKGROUND: GRADIENT LAYER (يتم التحكم فيه بالـ JS) ---------- */
+        /* ---------- BACKGROUND LAYERS ---------- */
         #bg-gradient {
             position: fixed;
             top: 0;
@@ -40,7 +39,6 @@
             transition: background 0.8s ease;
         }
 
-        /* ---------- GRID PATTERN ---------- */
         body::before {
             content: '';
             position: fixed;
@@ -56,7 +54,7 @@
             z-index: 0;
         }
 
-        /* ---------- FLOATING ORBS (تتحرك بالـ JS) ---------- */
+        /* ---------- ORBS ---------- */
         .orb {
             position: fixed;
             border-radius: 50%;
@@ -231,8 +229,7 @@
 
         /* ---------- SECTIONS ---------- */
         section {
-            margin: 5rem 0;
-            /* زيادة المسافة عشان التمرير يبقى واضح */;
+            margin: 4rem 0;
         }
 
         h2 {
@@ -311,6 +308,37 @@
             background: linear-gradient(90deg, #00c7b7, #4facfe);
             border-radius: 10px;
             transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+        }
+
+        /* ---------- CERTIFICATIONS (NEW) ---------- */
+        .certs-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .cert-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(22, 27, 34, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid rgba(48, 54, 61, 0.3);
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #c9d1d9;
+            transition: all 0.3s ease;
+        }
+        .cert-badge:hover {
+            border-color: #00c7b7;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.1);
+        }
+        .cert-badge i {
+            color: #4CAF50;
+            font-size: 1.1rem;
         }
 
         /* ---------- PROJECT CARDS ---------- */
@@ -503,15 +531,16 @@
             .skills-grid {
                 grid-template-columns: 1fr 1fr;
             }
+            .certs-grid {
+                justify-content: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== BACKGROUND GRADIENT LAYER (يتحكم فيه الـ JS) ========== -->
+    <!-- ========== BACKGROUND ========== -->
     <div id="bg-gradient"></div>
-
-    <!-- ========== BACKGROUND ORBS ========== -->
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
     <div class="orb orb-3" id="orb3"></div>
@@ -555,7 +584,12 @@
         <section class="fade-up">
             <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
             <div class="about-text">
-                Results-driven <strong>Artificial Intelligence Specialist</strong> with hands-on expertise in Natural Language Processing (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based platforms and Arabic fake news detection using AraBERT. Certified by NVIDIA DLI and ITI in Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the gap between technical innovation and real-world deployment.
+                <p>
+                    Results-driven <strong>Artificial Intelligence Specialist</strong> with hands-on expertise in Natural Language Processing (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based platforms and Arabic fake news detection using AraBERT.
+                </p>
+                <p style="margin-top: 0.8rem;">
+                    Certified by <strong>NVIDIA DLI</strong> and <strong>ITI</strong> in Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the gap between technical innovation and real-world deployment.
+                </p>
             </div>
         </section>
 
@@ -595,6 +629,16 @@
                     <div class="skill-label"><span><i class="fas fa-code"></i> C++</span> <span>65%</span></div>
                     <div class="skill-bar"><div class="fill" data-width="65"></div></div>
                 </div>
+            </div>
+        </section>
+
+        <!-- ========== CERTIFICATIONS (NEW) ========== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="certs-grid">
+                <span class="cert-badge"><i class="fas fa-check-circle"></i> NVIDIA DLI — Generative AI</span>
+                <span class="cert-badge"><i class="fas fa-check-circle"></i> ITI — LLM Applications</span>
+                <span class="cert-badge"><i class="fas fa-check-circle"></i> ITI — Generative AI</span>
             </div>
         </section>
 
@@ -664,12 +708,13 @@
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-    // ----- 1. TYPING EFFECT -----
+    // ----- 1. TYPING EFFECT (Enhanced with longer titles) -----
     const typedTextElement = document.getElementById('typed-text');
     const roles = [
         'AI Developer',
-        'NLP & Computer Vision Specialist',
         'Generative AI Engineer',
+        'NLP & Computer Vision Specialist',
+        'LLM Application Developer',
         'Open Source Contributor'
     ];
     let roleIndex = 0;
@@ -722,15 +767,12 @@
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // ============================================================
-    // ----- 3. PROFESSIONAL SCROLL BACKGROUND EFFECT (NEW) -----
-    // ============================================================
+    // ----- 3. SCROLL BACKGROUND EFFECT -----
     const orb1 = document.getElementById('orb1');
     const orb2 = document.getElementById('orb2');
     const orb3 = document.getElementById('orb3');
     const bgGradient = document.getElementById('bg-gradient');
 
-    // إضافة متغيرات عشان نتحكم في سرعة التمرير
     let lastScrollY = 0;
     let ticking = false;
 
@@ -741,21 +783,14 @@
             window.requestAnimationFrame(() => {
                 const scrollY = lastScrollY;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                // نسبة التمرير من 0 (أعلى الصفحة) لـ 1 (آخر الصفحة)
                 const progress = Math.min(scrollY / maxScroll, 1);
 
-                // ---- 1. تحريك الكرات (Parallax) ----
-                // الكرة الأولى تتحرك ببطء لليمين والأسفل
+                // Move orbs
                 orb1.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.04}px) scale(${1 + progress * 0.05})`;
-
-                // الكرة الثانية تتحرك لليسار والأعلى (عكس الاتجاه)
                 orb2.style.transform = `translate(${-scrollY * 0.03}px, ${-scrollY * 0.06}px) scale(${1 + progress * 0.08})`;
-
-                // الكرة الثالثة تتحرك لليمين والأسفل بسرعة متوسطة
                 orb3.style.transform = `translate(${scrollY * 0.015}px, ${scrollY * 0.08}px) scale(${1 + progress * 0.04})`;
 
-                // ---- 2. تغيير ألوان الخلفية (Gradient Shift) ----
-                // كل ما تنزل تحت، الألوان تتغير تدريجياً من تيل/أزرق لبنفسجي/وردي
+                // Shift gradient colors
                 const r1 = 0 + progress * 50;
                 const g1 = 199 - progress * 60;
                 const b1 = 183 - progress * 40;
@@ -780,7 +815,6 @@
         }
     });
 
-    // تشغيل أول مرة عشان يضبط من البداية
     window.dispatchEvent(new Event('scroll'));
 </script>
 
