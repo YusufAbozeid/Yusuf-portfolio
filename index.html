@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yusuf Abozeid | AI Developer</title>
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         /* ---------- RESET & BASE ---------- */
@@ -16,25 +15,88 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0b0e14;
+            background: #080b12;
             color: #c9d1d9;
             line-height: 1.6;
             padding: 2rem 1rem;
             overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* ---------- BACKGROUND: DYNAMIC ORBS + GRID ---------- */
+        /* 1. Grid Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 1px 1px, rgba(0, 199, 183, 0.08) 1px, transparent 0);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 2. Floating Glowing Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.25;
+            z-index: 0;
+            pointer-events: none;
+            animation: floatOrb 14s infinite alternate ease-in-out;
+        }
+        .orb-1 {
+            width: 450px;
+            height: 450px;
+            background: #00c7b7;
+            top: -15%;
+            left: -10%;
+            animation-duration: 16s;
+        }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: #4facfe;
+            bottom: -15%;
+            right: -10%;
+            animation-duration: 20s;
+            animation-delay: -2s;
+        }
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: #a855f7;
+            top: 40%;
+            left: 50%;
+            animation-duration: 18s;
+            animation-delay: -4s;
+        }
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+            100% {
+                transform: translate(40px, 60px) scale(1.15);
+            }
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
-        /* ---------- SCROLL ANIMATIONS (Fade In Up) ---------- */
+        /* ---------- SCROLL ANIMATIONS ---------- */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
-
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
@@ -44,7 +106,7 @@
         .hero {
             text-align: center;
             padding: 2rem 0 3rem;
-            border-bottom: 1px solid rgba(48, 54, 61, 0.6);
+            border-bottom: 1px solid rgba(48, 54, 61, 0.3);
         }
 
         .avatar {
@@ -53,13 +115,13 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #00c7b7;
-            box-shadow: 0 0 40px rgba(0, 199, 183, 0.25);
+            box-shadow: 0 0 40px rgba(0, 199, 183, 0.2);
             margin-bottom: 1.2rem;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .avatar:hover {
             transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 0 60px rgba(0, 199, 183, 0.4);
+            box-shadow: 0 0 70px rgba(0, 199, 183, 0.4);
         }
 
         .hero h1 {
@@ -72,20 +134,21 @@
             letter-spacing: -0.5px;
         }
 
-        /* ---------- TYPING ANIMATION ---------- */
+        /* Typing Effect */
         .typing-wrapper {
-            height: 2.5rem;
+            height: 2.8rem;
             margin-top: 0.2rem;
         }
         .typing-text {
             font-size: 1.3rem;
             font-weight: 500;
-            color: #8b949e;
+            color: #b1bac4;
+            white-space: nowrap;
         }
         .typing-text .cursor {
             display: inline-block;
             width: 3px;
-            height: 1.3rem;
+            height: 1.4rem;
             background: #00c7b7;
             margin-left: 4px;
             animation: blink 0.8s step-end infinite;
@@ -111,7 +174,7 @@
             margin-right: 6px;
         }
 
-        /* ---------- BADGES ---------- */
+        /* ---------- BADGES (Including CV Button) ---------- */
         .badges {
             margin-top: 1.5rem;
             display: flex;
@@ -124,28 +187,42 @@
             display: inline-flex;
             align-items: center;
             gap: 0.4rem;
-            background: rgba(33, 38, 45, 0.7);
-            backdrop-filter: blur(6px);
+            background: rgba(33, 38, 45, 0.6);
+            backdrop-filter: blur(8px);
             padding: 0.4rem 1.2rem;
             border-radius: 30px;
             font-size: 0.85rem;
             font-weight: 500;
             color: #c9d1d9;
             text-decoration: none;
-            border: 1px solid rgba(48, 54, 61, 0.5);
+            border: 1px solid rgba(48, 54, 61, 0.4);
             transition: all 0.3s ease;
         }
         .badge:hover {
             border-color: #00c7b7;
             background: rgba(0, 199, 183, 0.1);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 199, 183, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.15);
         }
         .badge i {
             color: #00c7b7;
         }
         .badge .gpa-color {
             color: #4CAF50;
+        }
+
+        /* Special CV Badge */
+        .cv-badge {
+            border-color: rgba(255, 107, 107, 0.4);
+            background: rgba(255, 107, 107, 0.08);
+        }
+        .cv-badge i {
+            color: #ff6b6b;
+        }
+        .cv-badge:hover {
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.15);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
         }
 
         /* ---------- SECTIONS ---------- */
@@ -158,7 +235,7 @@
             font-weight: 600;
             color: #f0f6fc;
             margin-bottom: 1.8rem;
-            border-bottom: 2px solid rgba(33, 38, 45, 0.8);
+            border-bottom: 2px solid rgba(33, 38, 45, 0.6);
             padding-bottom: 0.6rem;
             display: inline-block;
             background: linear-gradient(135deg, #f0f6fc, #00c7b7);
@@ -176,7 +253,7 @@
             font-size: 1.1rem;
             color: #b1bac4;
             max-width: 850px;
-            background: rgba(22, 27, 34, 0.5);
+            background: rgba(22, 27, 34, 0.4);
             padding: 1.5rem 2rem;
             border-radius: 16px;
             border-left: 4px solid #00c7b7;
@@ -189,28 +266,28 @@
         /* ---------- SKILL BARS ---------- */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
         }
         .skill-item {
-            background: rgba(22, 27, 34, 0.6);
+            background: rgba(22, 27, 34, 0.5);
             backdrop-filter: blur(4px);
-            padding: 0.8rem 1.2rem;
+            padding: 0.7rem 1.2rem;
             border-radius: 12px;
-            border: 1px solid rgba(48, 54, 61, 0.4);
+            border: 1px solid rgba(48, 54, 61, 0.3);
             transition: all 0.3s;
         }
         .skill-item:hover {
             border-color: #00c7b7;
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
         .skill-item .skill-label {
             display: flex;
             justify-content: space-between;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #c9d1d9;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.2rem;
         }
         .skill-item .skill-label i {
             color: #00c7b7;
@@ -218,7 +295,7 @@
         }
         .skill-bar {
             width: 100%;
-            height: 6px;
+            height: 5px;
             background: #21262d;
             border-radius: 10px;
             overflow: hidden;
@@ -231,7 +308,7 @@
             transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
 
-        /* ---------- PROJECT CARDS (GLASSMORPHISM) ---------- */
+        /* ---------- PROJECT CARDS ---------- */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -241,14 +318,14 @@
         .project-card {
             background: rgba(22, 27, 34, 0.5);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.4);
+            border: 1px solid rgba(48, 54, 61, 0.3);
             border-radius: 20px;
             padding: 1.8rem 1.5rem;
             transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
             position: relative;
             overflow: hidden;
         }
-        /* Glow effect on hover */
+        /* Glowing border effect */
         .project-card::before {
             content: '';
             position: absolute;
@@ -257,14 +334,14 @@
             right: -2px;
             bottom: -2px;
             border-radius: 20px;
-            background: linear-gradient(135deg, #00c7b7, #4facfe, #00c7b7);
+            background: linear-gradient(135deg, #00c7b7, #4facfe, #a855f7);
             background-size: 300% 300%;
             opacity: 0;
             z-index: -1;
             transition: opacity 0.6s ease;
         }
         .project-card:hover::before {
-            opacity: 1;
+            opacity: 0.8;
             animation: gradientMove 3s ease infinite;
         }
         @keyframes gradientMove {
@@ -287,7 +364,6 @@
         .project-card .icon {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            display: inline-block;
         }
         .project-card h3 {
             font-size: 1.5rem;
@@ -323,15 +399,15 @@
             font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
-            border: 1px solid rgba(48, 54, 61, 0.5);
+            border: 1px solid rgba(48, 54, 61, 0.4);
             color: #c9d1d9;
-            background: rgba(13, 17, 23, 0.6);
+            background: rgba(13, 17, 23, 0.5);
             transition: 0.3s ease;
         }
         .project-links a:hover {
             border-color: #00c7b7;
-            background: rgba(0, 199, 183, 0.15);
-            box-shadow: 0 0 20px rgba(0, 199, 183, 0.15);
+            background: rgba(0, 199, 183, 0.1);
+            box-shadow: 0 0 25px rgba(0, 199, 183, 0.1);
         }
         .project-links a i {
             color: #00c7b7;
@@ -345,7 +421,7 @@
             margin-top: 1.2rem;
             border-radius: 14px;
             overflow: hidden;
-            border: 1px solid rgba(48, 54, 61, 0.4);
+            border: 1px solid rgba(48, 54, 61, 0.3);
             background: #000;
             position: relative;
             padding-bottom: 56.25%;
@@ -363,16 +439,15 @@
 
         /* ---------- LEADERSHIP ---------- */
         .leadership-box {
-            background: rgba(22, 27, 34, 0.5);
+            background: rgba(22, 27, 34, 0.4);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.4);
+            border: 1px solid rgba(48, 54, 61, 0.3);
             border-radius: 20px;
             padding: 1.8rem 2rem;
             transition: all 0.3s;
         }
         .leadership-box:hover {
             border-color: #00c7b7;
-            box-shadow: 0 0 30px rgba(0, 199, 183, 0.05);
         }
         .leadership-box h3 {
             color: #f0f6fc;
@@ -391,7 +466,7 @@
         footer {
             margin-top: 4rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(48, 54, 61, 0.4);
+            border-top: 1px solid rgba(48, 54, 61, 0.3);
             text-align: center;
             color: #8b949e;
             font-size: 0.9rem;
@@ -404,6 +479,11 @@
         @media (max-width: 600px) {
             .hero h1 {
                 font-size: 2.2rem;
+            }
+            .typing-text {
+                font-size: 1rem;
+                white-space: normal;
+                /* Allows wrapping on mobile if needed */;
             }
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -426,9 +506,14 @@
 </head>
 <body>
 
+    <!-- ========== BACKGROUND ORBS ========== -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <div class="container">
 
-        <!-- ==================== HERO ==================== -->
+        <!-- ========== HERO ========== -->
         <header class="hero fade-up visible">
             <img class="avatar"
             src="https://github.com/user-attachments/assets/e034b63e-6180-4c28-9953-9c156ee6050a"
@@ -436,21 +521,34 @@
 
             <h1>Yusuf Adel Abouzeid</h1>
 
-            <!-- Typing Animation -->
+            <!-- Typing Animation (Fixed full text) -->
             <div class="typing-wrapper">
                 <span class="typing-text" id="typed-text"></span><span class="cursor"></span>
             </div>
 
-            <p class="location"><i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp; <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com</p>
+            <p class="location">
+                <i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp;
+                <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com
+            </p>
 
             <div class="badges">
-                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
-                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-                <a href="#" class="badge"><i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span></a>
+                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#" class="badge">
+                    <i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span>
+                </a>
+                <!-- NEW: Download CV Button -->
+                <a href="Yusuf_Abozeid_CV.pdf" download class="badge cv-badge">
+                    <i class="fas fa-file-pdf"></i> Download CV
+                </a>
             </div>
         </header>
 
-        <!-- ==================== ABOUT ==================== -->
+        <!-- ========== ABOUT ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
             <div class="about-text">
@@ -458,11 +556,10 @@
             </div>
         </section>
 
-        <!-- ==================== SKILLS (with Animated Bars) ==================== -->
+        <!-- ========== SKILLS ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-code"></i> Technical Skills</h2>
             <div class="skills-grid" id="skillsContainer">
-                <!-- Each skill item has a data-percent for the bar width -->
                 <div class="skill-item">
                     <div class="skill-label"><span><i class="fab fa-python"></i> Python</span> <span>90%</span></div>
                     <div class="skill-bar"><div class="fill" data-width="90"></div></div>
@@ -498,48 +595,38 @@
             </div>
         </section>
 
-        <!-- ==================== PROJECTS ==================== -->
+        <!-- ========== PROJECTS ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
-
             <div class="projects-grid">
 
-                <!-- Card 1: Fact Forge -->
+                <!-- Fact Forge -->
                 <div class="project-card">
                     <div class="icon">⚡</div>
                     <h3>Fact Forge</h3>
                     <p>
                         An end-to-end AI-powered platform for real-time fact-checking and claim verification.
-                        Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. The project
-                        is fully deployed and accessible for interactive testing.
+                        Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. Fully deployed for interactive testing.
                     </p>
                     <div class="project-links">
                         <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
                         <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
                     </div>
-
-                    <!-- Local Video File (Upload your file as 'demo.mp4' in the same folder) -->
                     <div class="video-wrapper">
                         <video controls preload="metadata">
                             <source src="demo.mp4" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
                     </div>
-                    <!-- إذا عايز تستخدم يوتيوب تاني، استبدل الـ video tag بيه:
-                    <div class="video-wrapper">
-                        <iframe src="https://www.youtube.com/embed/Cqy3H0qDnRo" allowfullscreen></iframe>
-                    </div>
-                    -->
                 </div>
 
-                <!-- Card 2: Mesdag AI -->
+                <!-- Mesdag AI -->
                 <div class="project-card">
                     <div class="icon">🧠</div>
                     <h3>Mesdag AI</h3>
                     <p>
                         An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
-                        Leverages deep linguistic analysis to effectively combat misinformation and promote
-                        digital literacy across the Arab world.
+                        Leverages deep linguistic analysis to combat misinformation across the Arab world.
                     </p>
                     <div class="collab"><i class="fas fa-users"></i> Collaborated with Ibrahim Abdelsattar</div>
                     <div class="project-links">
@@ -550,21 +637,19 @@
             </div>
         </section>
 
-        <!-- ==================== LEADERSHIP ==================== -->
+        <!-- ========== LEADERSHIP ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-trophy"></i> Leadership</h2>
             <div class="leadership-box">
                 <h3><i class="fas fa-chalkboard-teacher"></i> GDG FUE Campus Co-organizer</h3>
                 <p>
                     Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
-                    at Future University. Focused on bridging the gap between academic knowledge and industry
-                    practices by introducing students to modern AI stacks, cloud computing, and collaborative
-                    development workflows.
+                    at Future University. Bridged the gap between academic knowledge and industry practices by introducing students to modern AI stacks, cloud computing, and collaborative workflows.
                 </p>
             </div>
         </section>
 
-        <!-- ==================== FOOTER ==================== -->
+        <!-- ========== FOOTER ========== -->
         <footer>
             &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
         </footer>
@@ -572,14 +657,14 @@
     </div>
     <!-- /container -->
 
-    <!-- ==================== SCRIPTS (Typing + Scroll Animations) ==================== -->
+    <!-- ========== SCRIPTS ========== -->
     <script>
-        // ----- 1. TYPING EFFECT -----
+        // ----- 1. TYPING EFFECT (Fixed Full Titles) -----
         const typedTextElement = document.getElementById('typed-text');
         const roles = [
             'AI Developer',
-            'NLP Specialist',
-            'Computer Vision Enthusiast',
+            'NLP & Computer Vision Specialist',
+            'Generative AI Engineer',
             'Open Source Contributor'
         ];
         let roleIndex = 0;
@@ -590,17 +675,15 @@
         function typeEffect() {
             const currentRole = roles[roleIndex];
             if (!isDeleting) {
-                // Typing
                 typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
                 charIndex++;
                 if (charIndex === currentRole.length) {
                     isDeleting = true;
-                    typingSpeed = 2000; // pause before deleting
+                    typingSpeed = 2000;
                 } else {
                     typingSpeed = 80 + Math.random() * 60;
                 }
             } else {
-                // Deleting
                 typedTextElement.textContent = currentRole.substring(0, charIndex);
                 charIndex--;
                 if (charIndex < 0) {
@@ -613,17 +696,14 @@
             }
             setTimeout(typeEffect, typingSpeed);
         }
-        // Start typing when page loads
         window.addEventListener('load', typeEffect);
 
-        // ----- 2. SCROLL ANIMATIONS (Intersection Observer) -----
+        // ----- 2. SCROLL ANIMATIONS + SKILL BARS -----
         const fadeElements = document.querySelectorAll('.fade-up');
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // If it's a skill bar, animate the width
                     const fills = entry.target.querySelectorAll('.fill');
                     fills.forEach(fill => {
                         const width = fill.getAttribute('data-width');
@@ -633,16 +713,9 @@
                     });
                 }
             });
-        }, {
-            threshold: 0.15,
-            rootMargin: '0px 0px -30px 0px'
-        });
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
 
         fadeElements.forEach(el => observer.observe(el));
-
-        // Also manually trigger for skills container to animate bars if visible on load
-        // We let the observer handle it, but we need to ensure if they are already visible, they animate.
-        // The observer will fire immediately for visible elements.
     </script>
 
 </body>
