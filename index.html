@@ -22,6 +22,7 @@
             overflow-x: hidden;
             min-height: 200vh;
             position: relative;
+            cursor: default;
         }
 
         /* ---------- BACKGROUND LAYERS ---------- */
@@ -52,6 +53,22 @@
             background-size: 60px 60px, 30px 30px;
             pointer-events: none;
             z-index: 0;
+        }
+
+        /* ---------- MOUSE GLOW (NEW SUPER EFFECT) ---------- */
+        #cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 199, 183, 0.08), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s cubic-bezier(0.15, 0.85, 0.35, 1);
+            will-change: transform;
+            filter: blur(80px);
+            opacity: 0.6;
         }
 
         /* ---------- ORBS ---------- */
@@ -310,35 +327,91 @@
             transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
         }
 
-        /* ---------- CERTIFICATIONS (NEW) ---------- */
-        .certs-grid {
+        /* ---------- CERTIFICATION CARD (NEW) ---------- */
+        .cert-card {
+            background: rgba(22, 27, 34, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(48, 54, 61, 0.3);
+            border-radius: 20px;
+            padding: 1.8rem 2rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid #00c7b7;
+        }
+        .cert-card:hover {
+            border-color: #00c7b7;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(0, 199, 183, 0.08);
+        }
+        .cert-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 199, 183, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: #00c7b7;
+            flex-shrink: 0;
+        }
+        .cert-header h3 {
+            font-size: 1.3rem;
+            color: #f0f6fc;
+            margin-bottom: 0.1rem;
+        }
+        .cert-org {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        .cert-org i {
+            color: #00c7b7;
+            margin-right: 6px;
+        }
+        .cert-body p {
+            color: #b1bac4;
+            margin-bottom: 0.3rem;
+        }
+        .cert-body strong {
+            color: #f0f6fc;
+        }
+        .cert-date {
+            color: #8b949e !important;
+            font-size: 0.9rem;
+        }
+        .cert-date i {
+            color: #4CAF50;
+            margin-right: 6px;
+        }
+        .cert-topics {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        .cert-badge {
-            display: inline-flex;
-            align-items: center;
             gap: 0.6rem;
-            background: rgba(22, 27, 34, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0.5rem 1.5rem;
-            border-radius: 40px;
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #c9d1d9;
-            transition: all 0.3s ease;
+            margin-top: 0.8rem;
         }
-        .cert-badge:hover {
+        .topic-tag {
+            background: rgba(0, 199, 183, 0.08);
+            border: 1px solid rgba(0, 199, 183, 0.15);
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #b1bac4;
+            transition: all 0.2s;
+        }
+        .topic-tag:hover {
+            background: rgba(0, 199, 183, 0.15);
             border-color: #00c7b7;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.1);
+            color: #f0f6fc;
         }
-        .cert-badge i {
+        .topic-tag i {
             color: #4CAF50;
-            font-size: 1.1rem;
+            margin-right: 4px;
+            font-size: 0.7rem;
         }
 
         /* ---------- PROJECT CARDS ---------- */
@@ -531,8 +604,12 @@
             .skills-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            .certs-grid {
-                justify-content: center;
+            .cert-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            #cursor-glow {
+                display: none;
             }
         }
     </style>
@@ -544,6 +621,7 @@
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
     <div class="orb orb-3" id="orb3"></div>
+    <div id="cursor-glow"></div>
 
     <div class="container">
 
@@ -632,13 +710,33 @@
             </div>
         </section>
 
-        <!-- ========== CERTIFICATIONS (NEW) ========== -->
+        <!-- ========== CERTIFICATIONS (FULL DETAILS) ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-certificate"></i> Certifications</h2>
-            <div class="certs-grid">
-                <span class="cert-badge"><i class="fas fa-check-circle"></i> NVIDIA DLI — Generative AI</span>
-                <span class="cert-badge"><i class="fas fa-check-circle"></i> ITI — LLM Applications</span>
-                <span class="cert-badge"><i class="fas fa-check-circle"></i> ITI — Generative AI</span>
+
+            <div class="cert-card">
+                <div class="cert-header">
+                    <div class="cert-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3>NVIDIA DLI Summer Training Program</h3>
+                        <p class="cert-org"><i class="fas fa-building"></i> Information Technology Institute (ITI)</p>
+                    </div>
+                </div>
+
+                <div class="cert-body">
+                    <p><strong>Generative AI (Beginner Level)</strong> — 35 Total Hours</p>
+                    <p class="cert-date"><i class="far fa-calendar-alt"></i> January 26 – February 10, 2026</p>
+
+                    <div class="cert-topics">
+                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Python Fundamentals (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle"></i> AI For All: Basics to GenAI (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Generative AI Explained (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Prompt Engineering (17 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Augment LLM Using RAG (9 hrs)</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -708,7 +806,7 @@
 
 <!-- ========== SCRIPTS ========== -->
 <script>
-    // ----- 1. TYPING EFFECT (Enhanced with longer titles) -----
+    // ----- 1. TYPING EFFECT -----
     const typedTextElement = document.getElementById('typed-text');
     const roles = [
         'AI Developer',
@@ -767,7 +865,7 @@
 
     fadeElements.forEach(el => observer.observe(el));
 
-    // ----- 3. SCROLL BACKGROUND EFFECT -----
+    // ----- 3. SCROLL BACKGROUND EFFECT (Orbs + Gradient) -----
     const orb1 = document.getElementById('orb1');
     const orb2 = document.getElementById('orb2');
     const orb3 = document.getElementById('orb3');
@@ -778,27 +876,22 @@
 
     window.addEventListener('scroll', () => {
         lastScrollY = window.scrollY;
-
         if (!ticking) {
             window.requestAnimationFrame(() => {
                 const scrollY = lastScrollY;
                 const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
                 const progress = Math.min(scrollY / maxScroll, 1);
 
-                // Move orbs
                 orb1.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.04}px) scale(${1 + progress * 0.05})`;
                 orb2.style.transform = `translate(${-scrollY * 0.03}px, ${-scrollY * 0.06}px) scale(${1 + progress * 0.08})`;
                 orb3.style.transform = `translate(${scrollY * 0.015}px, ${scrollY * 0.08}px) scale(${1 + progress * 0.04})`;
 
-                // Shift gradient colors
                 const r1 = 0 + progress * 50;
                 const g1 = 199 - progress * 60;
                 const b1 = 183 - progress * 40;
-
                 const r2 = 79 + progress * 80;
                 const g2 = 172 - progress * 40;
                 const b2 = 254 - progress * 60;
-
                 const r3 = 168 - progress * 40;
                 const g3 = 85 + progress * 30;
                 const b3 = 247 + progress * 8;
@@ -808,13 +901,22 @@
                             radial-gradient(circle at 80% 70%, rgba(${r2}, ${g2}, ${b2}, 0.12), transparent 50%),
                             radial-gradient(circle at 40% 80%, rgba(${r3}, ${g3}, ${b3}, 0.08), transparent 50%)
                         `;
-
                 ticking = false;
             });
             ticking = true;
         }
     });
 
+    // ----- 4. MOUSE TRACKING GLOW (NEW SUPER EFFECT) -----
+    const cursorGlow = document.getElementById('cursor-glow');
+
+    document.addEventListener('mousemove', (e) => {
+        // Update the position of the glow layer to follow the cursor exactly
+        cursorGlow.style.left = e.clientX + 'px';
+        cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // Trigger initial scroll to set correct initial state
     window.dispatchEvent(new Event('scroll'));
 </script>
 
