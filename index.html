@@ -224,27 +224,24 @@
             color: #4CAF50;
         }
 
-        /* ---------- VIDEO DEMO ---------- */
+        /* ---------- YOUTUBE EMBED ---------- */
         .video-wrapper {
             margin-top: 1.2rem;
-            background: #0d1117;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid #30363d;
-        }
-        .video-wrapper video {
-            width: 100%;
-            display: block;
             background: #000;
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
         }
-        .video-caption {
-            padding: 0.5rem 1rem;
-            font-size: 0.85rem;
-            color: #8b949e;
-            background: #161b22;
-        }
-        .video-caption i {
-            color: #00c7b7;
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
         /* ---------- LEADERSHIP ---------- */
@@ -313,10 +310,9 @@
         <p class="location"><i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp; <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com</p>
 
         <div class="badges">
-            <a href="#" class="badge" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yusufabozeid?utm_source=share_via&utm_content=profile&utm_medium=member_ios" class="badge" target="_blank"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
             <a href="https://github.com/YusufAbozeid" class="badge" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             <a href="#" class="badge"><i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span></a>
-            <a href="#" class="badge"><i class="fas fa-microchip"></i> NLP &amp; Computer Vision</a>
         </div>
     </header>
 
@@ -324,13 +320,11 @@
     <section>
         <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
         <p class="about-text">
-            Level 3 Computer Science student specializing in <strong>Artificial Intelligence</strong>,
-            with a strong focus on <strong>Natural Language Processing (NLP)</strong> and
-            <strong>Computer Vision</strong>.<br />
-            I am deeply passionate about building AI solutions that are not only highly efficient
-            but also <strong>ethical</strong> and <strong>transparent</strong>. My work tackles
-            real-world challenges, such as detecting Arabic misinformation and building real-time
-            object classification systems.
+            Results-driven Artificial Intelligence Specialist with hands-on expertise in Natural Language Processing
+            (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based
+            platforms and Arabic fake news detection using AraBERT. Certified by NVIDIA DLI and ITI in
+            Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the
+            gap between technical innovation and real-world deployment.
         </p>
     </section>
 
@@ -361,26 +355,23 @@
                 <h3>Fact Forge</h3>
                 <p>
                     An end-to-end AI-powered platform for real-time fact-checking and claim verification.
-                    Built using state-of-the-art <strong>NLP</strong> and deep learning techniques.
+                    Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. The project
+                    is fully deployed and accessible for interactive testing.
                 </p>
                 <div class="project-links">
                     <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
-                    <a href="#" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                    <!-- 🔴 Replace the 'href="#"' above with your actual Live Demo URL -->
+                    <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
                 </div>
 
-                <!-- VIDEO DEMO (Place your video file in the repo root and rename it to 'demo.mp4') -->
+                <!-- Embedded YouTube Video -->
                 <div class="video-wrapper">
-                    <video controls preload="metadata">
-                        <source src="demo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-caption">
-                        <i class="fas fa-video"></i> &nbsp; Demo: Fact Forge in action
-                    </div>
+                    <iframe 
+                        src="https://www.youtube.com/embed/Cqy3H0qDnRo" 
+                        title="Fact Forge Demo" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
-                <!-- 🔴 INSTRUCTION: Upload your demo video to this repo, rename it to 'demo.mp4', 
-                     and place it in the same folder as index.html. The video will play here. -->
             </div>
 
             <!-- Card 2: Mesdag AI -->
@@ -389,14 +380,12 @@
                 <h3>Mesdag AI</h3>
                 <p>
                     An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
-                    Leverages deep linguistic analysis to combat misinformation and promote
-                    digital literacy in the Arab world.
+                    Leverages deep linguistic analysis to effectively combat misinformation and promote
+                    digital literacy across the Arab world.
                 </p>
-                <div class="collab"><i class="fas fa-users"></i> Built in collaboration with Ibrahim Abdelsattar</div>
+                <div class="collab"><i class="fas fa-users"></i> Collaborated with Ibrahim Abdelsattar</div>
                 <div class="project-links">
                     <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank"><i class="fab fa-github"></i> Repository</a>
-                    <a href="#" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
-                    <!-- 🔴 Replace 'href="#"' above with Live Demo URL or delete this line -->
                 </div>
             </div>
 
