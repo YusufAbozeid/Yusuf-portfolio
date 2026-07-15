@@ -24,8 +24,33 @@
             position: relative;
         }
 
-        /* ---------- BACKGROUND: DYNAMIC ORBS + GRID ---------- */
-        /* 1. Grid Pattern */
+        /* ---------- ANIMATED GRADIENT BACKGROUND (NEW) ---------- */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 199, 183, 0.06), transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.08), transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.05), transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: gradientPulse 12s ease-in-out infinite alternate;
+        }
+        @keyframes gradientPulse {
+            0% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        /* ---------- GRID PATTERN (Enhanced) ---------- */
         body::before {
             content: '';
             position: fixed;
@@ -33,57 +58,60 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle at 1px 1px, rgba(0, 199, 183, 0.08) 1px, transparent 0);
-            background-size: 50px 50px;
+            background-image:
+                radial-gradient(circle at 2px 2px, rgba(0, 199, 183, 0.07) 1px, transparent 0),
+                radial-gradient(circle at 50px 50px, rgba(79, 172, 254, 0.03) 1px, transparent 0);
+            background-size: 60px 60px, 30px 30px;
             pointer-events: none;
             z-index: 0;
         }
 
-        /* 2. Floating Glowing Orbs */
+        /* ---------- FLOATING ORBS (with new sizes/colors) ---------- */
         .orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.25;
+            filter: blur(120px);
+            opacity: 0.2;
             z-index: 0;
             pointer-events: none;
-            animation: floatOrb 14s infinite alternate ease-in-out;
+            animation: floatOrb 18s infinite alternate ease-in-out;
         }
         .orb-1 {
-            width: 450px;
-            height: 450px;
-            background: #00c7b7;
-            top: -15%;
-            left: -10%;
-            animation-duration: 16s;
-        }
-        .orb-2 {
             width: 500px;
             height: 500px;
-            background: #4facfe;
-            bottom: -15%;
-            right: -10%;
+            background: #00c7b7;
+            top: -20%;
+            left: -10%;
             animation-duration: 20s;
-            animation-delay: -2s;
+        }
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: #4facfe;
+            bottom: -20%;
+            right: -10%;
+            animation-duration: 24s;
+            animation-delay: -4s;
         }
         .orb-3 {
-            width: 350px;
-            height: 350px;
+            width: 400px;
+            height: 400px;
             background: #a855f7;
-            top: 40%;
+            top: 50%;
             left: 50%;
-            animation-duration: 18s;
-            animation-delay: -4s;
+            animation-duration: 22s;
+            animation-delay: -8s;
         }
         @keyframes floatOrb {
             0% {
                 transform: translate(0, 0) scale(1);
             }
             100% {
-                transform: translate(40px, 60px) scale(1.15);
+                transform: translate(60px, -60px) scale(1.2);
             }
         }
 
+        /* ---------- CONTAINER ---------- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
@@ -102,7 +130,7 @@
             transform: translateY(0);
         }
 
-        /* ---------- HERO SECTION ---------- */
+        /* ---------- HERO ---------- */
         .hero {
             text-align: center;
             padding: 2rem 0 3rem;
@@ -134,7 +162,6 @@
             letter-spacing: -0.5px;
         }
 
-        /* Typing Effect */
         .typing-wrapper {
             height: 2.8rem;
             margin-top: 0.2rem;
@@ -174,7 +201,7 @@
             margin-right: 6px;
         }
 
-        /* ---------- BADGES (Including CV Button) ---------- */
+        /* ---------- BADGES ---------- */
         .badges {
             margin-top: 1.5rem;
             display: flex;
@@ -211,7 +238,6 @@
             color: #4CAF50;
         }
 
-        /* Special CV Badge */
         .cv-badge {
             border-color: rgba(255, 107, 107, 0.4);
             background: rgba(255, 107, 107, 0.08);
@@ -325,7 +351,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Glowing border effect */
         .project-card::before {
             content: '';
             position: absolute;
@@ -416,7 +441,7 @@
             color: #4CAF50;
         }
 
-        /* ---------- VIDEO EMBED ---------- */
+        /* ---------- VIDEO IFRAME (YouTube) ---------- */
         .video-wrapper {
             margin-top: 1.2rem;
             border-radius: 14px;
@@ -427,7 +452,6 @@
             padding-bottom: 56.25%;
             height: 0;
         }
-        .video-wrapper video,
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -483,7 +507,6 @@
             .typing-text {
                 font-size: 1rem;
                 white-space: normal;
-                /* Allows wrapping on mobile if needed */;
             }
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -521,7 +544,6 @@
 
             <h1>Yusuf Adel Abouzeid</h1>
 
-            <!-- Typing Animation (Fixed full text) -->
             <div class="typing-wrapper">
                 <span class="typing-text" id="typed-text"></span><span class="cursor"></span>
             </div>
@@ -541,8 +563,8 @@
                 <a href="#" class="badge">
                     <i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span>
                 </a>
-                <!-- NEW: Download CV Button -->
-                <a href="https://drive.google.com/file/d/1gjO8GCTvTm3ZHRhkRBEPruHTa5f3YuZZ/view?usp=sharing" download class="badge cv-badge">
+                <!-- CV Button (use direct download link from Google Drive) -->
+                <a href="https://drive.google.com/uc?export=download&id=1gjO8GCTvTm3ZHRhkRBEPruHTa5f3YuZZ" target="_blank" class="badge cv-badge">
                     <i class="fas fa-file-pdf"></i> Download CV
                 </a>
             </div>
@@ -559,7 +581,7 @@
         <!-- ========== SKILLS ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-code"></i> Technical Skills</h2>
-            <div class="skills-grid" id="skillsContainer">
+            <div class="skills-grid">
                 <div class="skill-item">
                     <div class="skill-label"><span><i class="fab fa-python"></i> Python</span> <span>90%</span></div>
                     <div class="skill-bar"><div class="fill" data-width="90"></div></div>
@@ -612,11 +634,14 @@
                         <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
                         <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
                     </div>
+                    <!-- CORRECTED: YouTube iframe embed -->
                     <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://youtu.be/Cqy3H0qDnRo" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                        <iframe 
+                            src="https://www.youtube.com/embed/Cqy3H0qDnRo" 
+                            title="Fact Forge Demo" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
 
@@ -659,7 +684,7 @@
 
     <!-- ========== SCRIPTS ========== -->
     <script>
-        // ----- 1. TYPING EFFECT (Fixed Full Titles) -----
+        // ----- 1. TYPING EFFECT -----
         const typedTextElement = document.getElementById('typed-text');
         const roles = [
             'AI Developer',
