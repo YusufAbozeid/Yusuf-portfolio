@@ -49,7 +49,7 @@ gap between technical innovation and real-world deployment.
 > Built using state-of-the-art **NLP** and deep learning techniques. The project is fully deployed and accessible for interactive testing.
 
 [![GitHub](https://img.shields.io/badge/Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/YusufAbozeid/Fact-Forge)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-00C7B7?style=flat-square&logo=vercel&logoColor=white)](YOUR_LIVE_DEMO_URL_HERE) <!-- 🔴 Replace with your actual deployed link -->
+[![Live Demo](https://img.shields.io/badge/Live_Demo-00C7B7?style=flat-square&logo=vercel&logoColor=white)]([YOUR_LIVE_DEMO_URL_HERE](https://youtu.be/Cqy3H0qDnRo)) <!-- 🔴 Replace with your actual deployed link -->
 
 
 
