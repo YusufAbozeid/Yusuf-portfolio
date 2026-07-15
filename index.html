@@ -55,7 +55,7 @@
             z-index: 0;
         }
 
-        /* ---------- MOUSE GLOW (NEW SUPER EFFECT) ---------- */
+        /* ---------- MOUSE GLOW ---------- */
         #cursor-glow {
             position: fixed;
             width: 600px;
@@ -282,52 +282,38 @@
             color: #f0f6fc;
         }
 
-        /* ---------- SKILL BARS ---------- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.2rem;
+        /* ---------- SKILLS (NEW: just clean tags, NO bars/percentages) ---------- */
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        .skill-item {
+        .skill-tag {
             background: rgba(22, 27, 34, 0.5);
             backdrop-filter: blur(4px);
-            padding: 0.7rem 1.2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            transition: all 0.3s;
-        }
-        .skill-item:hover {
-            border-color: #00c7b7;
-            transform: scale(1.03);
-        }
-        .skill-item .skill-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-size: 0.95rem;
             font-weight: 500;
             color: #c9d1d9;
-            margin-bottom: 0.2rem;
+            border: 1px solid rgba(48, 54, 61, 0.3);
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
         }
-        .skill-item .skill-label i {
+        .skill-tag:hover {
+            border-color: #00c7b7;
+            background: rgba(0, 199, 183, 0.08);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        .skill-tag i {
             color: #00c7b7;
-            margin-right: 6px;
-        }
-        .skill-bar {
-            width: 100%;
-            height: 5px;
-            background: #21262d;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        .skill-bar .fill {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #00c7b7, #4facfe);
-            border-radius: 10px;
-            transition: width 1.2s cubic-bezier(0.2, 0.9, 0.3, 1);
+            font-size: 1rem;
         }
 
-        /* ---------- CERTIFICATION CARD (NEW) ---------- */
+        /* ---------- CERTIFICATION CARD ---------- */
         .cert-card {
             background: rgba(22, 27, 34, 0.5);
             backdrop-filter: blur(8px);
@@ -601,8 +587,12 @@
             .about-text {
                 padding: 1rem;
             }
-            .skills-grid {
-                grid-template-columns: 1fr 1fr;
+            .skills-tags {
+                gap: 0.6rem;
+            }
+            .skill-tag {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
             }
             .cert-header {
                 flex-direction: column;
@@ -671,46 +661,22 @@
             </div>
         </section>
 
-        <!-- ========== SKILLS ========== -->
+        <!-- ========== SKILLS (No Percentages, No Bars) ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-code"></i> Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fab fa-python"></i> Python</span> <span>90%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="90"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-brain"></i> PyTorch</span> <span>85%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="85"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-language"></i> AraBERT</span> <span>80%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="80"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-eye"></i> OpenCV</span> <span>75%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="75"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-robot"></i> Hugging Face</span> <span>85%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="85"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fab fa-linux"></i> Linux / Git</span> <span>80%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="80"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-database"></i> Docker</span> <span>70%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="70"></div></div>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-label"><span><i class="fas fa-code"></i> C++</span> <span>65%</span></div>
-                    <div class="skill-bar"><div class="fill" data-width="65"></div></div>
-                </div>
+            <div class="skills-tags">
+                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fas fa-brain"></i> PyTorch</span>
+                <span class="skill-tag"><i class="fas fa-language"></i> AraBERT</span>
+                <span class="skill-tag"><i class="fas fa-eye"></i> OpenCV</span>
+                <span class="skill-tag"><i class="fas fa-robot"></i> Hugging Face</span>
+                <span class="skill-tag"><i class="fab fa-linux"></i> Linux / Git</span>
+                <span class="skill-tag"><i class="fas fa-database"></i> Docker</span>
+                <span class="skill-tag"><i class="fas fa-code"></i> C++</span>
             </div>
         </section>
 
-        <!-- ========== CERTIFICATIONS (FULL DETAILS) ========== -->
+        <!-- ========== CERTIFICATIONS ========== -->
         <section class="fade-up">
             <h2><i class="fas fa-certificate"></i> Certifications</h2>
 
@@ -846,19 +812,12 @@
     }
     window.addEventListener('load', typeEffect);
 
-    // ----- 2. SCROLL ANIMATIONS + SKILL BARS -----
+    // ----- 2. SCROLL ANIMATIONS (removed fill logic because no bars) -----
     const fadeElements = document.querySelectorAll('.fade-up');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                const fills = entry.target.querySelectorAll('.fill');
-                fills.forEach(fill => {
-                    const width = fill.getAttribute('data-width');
-                    if (width) {
-                        fill.style.width = width + '%';
-                    }
-                });
             }
         });
     }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
@@ -907,16 +866,14 @@
         }
     });
 
-    // ----- 4. MOUSE TRACKING GLOW (NEW SUPER EFFECT) -----
+    // ----- 4. MOUSE TRACKING GLOW -----
     const cursorGlow = document.getElementById('cursor-glow');
 
     document.addEventListener('mousemove', (e) => {
-        // Update the position of the glow layer to follow the cursor exactly
         cursorGlow.style.left = e.clientX + 'px';
         cursorGlow.style.top = e.clientY + 'px';
     });
 
-    // Trigger initial scroll to set correct initial state
     window.dispatchEvent(new Event('scroll'));
 </script>
 
