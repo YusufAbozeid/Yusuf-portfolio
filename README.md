@@ -59,7 +59,6 @@ gap between technical innovation and real-world deployment.
 > *(Collaborated with Ibrahim Abdelsattar)*
 
 [![GitHub](https://img.shields.io/badge/Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/IbrahimAbdelsattar/Mesdaq_AI)
-[![Live Demo](https://img.shields.io/badge/Live_Demo-00C7B7?style=flat-square&logo=vercel&logoColor=white)](YOUR_LIVE_DEMO_URL_HERE) <!-- 🔴 Replace if available, or delete this line -->
 
 ---
 
