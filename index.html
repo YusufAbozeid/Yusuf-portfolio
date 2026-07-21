@@ -4,7 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Yusuf Abozeid | AI Developer</title>
+
+    <!-- SEO / Social preview -->
+    <meta name="description" content="Yusuf Adel Abouzeid — Artificial Intelligence Specialist focused on NLP and Computer Vision. Builder of RAG platforms and Arabic fake news detection systems using AraBERT." />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Yusuf Abozeid | AI Developer" />
+    <meta property="og:description" content="Artificial Intelligence Specialist focused on NLP and Computer Vision. Builder of RAG platforms and Arabic fake news detection systems using AraBERT." />
+    <meta property="og:image" content="assets/avatar.jpg" />
+    <meta property="og:url" content="https://yusufabozeid.github.io/Yusuf-portfolio/" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon: inline teal "Y" monogram, no external asset needed -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080b12'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='bold' fill='%2300c7b7' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
     <style>
         /* ---------- RESET & BASE ---------- */
         * {
@@ -14,7 +31,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #080b12;
             color: #c9d1d9;
             line-height: 1.6;
@@ -23,6 +40,10 @@
             min-height: 200vh;
             position: relative;
             cursor: default;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Sora', 'Segoe UI', sans-serif;
         }
 
         /* ---------- BACKGROUND LAYERS ---------- */
@@ -58,6 +79,8 @@
         /* ---------- MOUSE GLOW ---------- */
         #cursor-glow {
             position: fixed;
+            top: 0;
+            left: 0;
             width: 600px;
             height: 600px;
             border-radius: 50%;
@@ -139,6 +162,7 @@
             box-shadow: 0 0 40px rgba(0, 199, 183, 0.2);
             margin-bottom: 1.2rem;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background: #11161f;
         }
         .avatar:hover {
             transform: scale(1.05) rotate(2deg);
@@ -186,7 +210,7 @@
 
         .hero .location {
             font-size: 1rem;
-            color: #8b949e;
+            color: #99a3b0;
             margin-top: 0.5rem;
         }
         .hero .location i {
@@ -218,7 +242,7 @@
             border: 1px solid rgba(48, 54, 61, 0.4);
             transition: all 0.3s ease;
         }
-        .badge:hover {
+        a.badge:hover {
             border-color: #00c7b7;
             background: rgba(0, 199, 183, 0.1);
             transform: translateY(-3px);
@@ -229,6 +253,10 @@
         }
         .badge .gpa-color {
             color: #4CAF50;
+        }
+        /* Non-interactive badge (GPA) - no hover affordance, not a link */
+        span.badge {
+            cursor: default;
         }
 
         .cv-badge {
@@ -282,7 +310,7 @@
             color: #f0f6fc;
         }
 
-        /* ---------- SKILLS (NEW: just clean tags, NO bars/percentages) ---------- */
+        /* ---------- SKILLS ---------- */
         .skills-tags {
             display: flex;
             flex-wrap: wrap;
@@ -352,7 +380,7 @@
             margin-bottom: 0.1rem;
         }
         .cert-org {
-            color: #8b949e;
+            color: #99a3b0;
             font-size: 0.9rem;
         }
         .cert-org i {
@@ -367,7 +395,7 @@
             color: #f0f6fc;
         }
         .cert-date {
-            color: #8b949e !important;
+            color: #99a3b0 !important;
             font-size: 0.9rem;
         }
         .cert-date i {
@@ -468,7 +496,7 @@
         }
         .project-card .collab {
             font-size: 0.85rem;
-            color: #8b949e;
+            color: #99a3b0;
             margin-bottom: 1rem;
         }
         .project-card .collab i {
@@ -552,13 +580,62 @@
             color: #b1bac4;
         }
 
+        /* ---------- CONTACT CTA ---------- */
+        .contact-box {
+            text-align: center;
+            background: rgba(22, 27, 34, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(48, 54, 61, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+        }
+        .contact-box p {
+            color: #b1bac4;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.6rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .contact-links .primary {
+            background: linear-gradient(135deg, #00c7b7, #4facfe);
+            color: #080b12;
+        }
+        .contact-links .primary:hover {
+            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.35);
+            transform: translateY(-3px);
+        }
+        .contact-links .secondary {
+            border: 1px solid rgba(48, 54, 61, 0.5);
+            color: #c9d1d9;
+            background: rgba(13, 17, 23, 0.5);
+        }
+        .contact-links .secondary:hover {
+            border-color: #00c7b7;
+            transform: translateY(-3px);
+        }
+
         /* ---------- FOOTER ---------- */
         footer {
             margin-top: 4rem;
             padding-top: 2rem;
             border-top: 1px solid rgba(48, 54, 61, 0.3);
             text-align: center;
-            color: #8b949e;
+            color: #99a3b0;
             font-size: 0.9rem;
         }
         footer span {
@@ -602,6 +679,26 @@
                 display: none;
             }
         }
+
+        /* ---------- REDUCED MOTION ---------- */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+            .fade-up {
+                opacity: 1;
+                transform: none;
+            }
+            #cursor-glow,
+            .orb {
+                display: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -618,39 +715,39 @@
         <!-- ========== HERO ========== -->
         <header class="hero fade-up visible">
             <img class="avatar"
-            src="https://github.com/user-attachments/assets/e034b63e-6180-4c28-9953-9c156ee6050a"
+            src="assets/avatar.jpg"
             alt="Yusuf Abozeid" />
 
             <h1>Yusuf Adel Abouzeid</h1>
 
             <div class="typing-wrapper">
-                <span class="typing-text" id="typed-text"></span><span class="cursor"></span>
+                <span class="typing-text" id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
             </div>
 
             <p class="location">
-                <i class="fas fa-map-pin"></i> Giza, Egypt &nbsp;|&nbsp;
-                <i class="fas fa-envelope"></i> yusuf.abozeid@gmail.com
+                <i class="fas fa-map-pin" aria-hidden="true"></i> Giza, Egypt &nbsp;|&nbsp;
+                <i class="fas fa-envelope" aria-hidden="true"></i> yusuf.abozeid@gmail.com
             </p>
 
             <div class="badges">
-                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank">
-                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank">
-                    <i class="fab fa-github"></i> GitHub
+                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank" rel="noopener">
+                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
                 </a>
-                <a href="#" class="badge">
-                    <i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span>
-                </a>
-                <a href="https://drive.google.com/uc?export=download&id=1gjO8GCTvTm3ZHRhkRBEPruHTa5f3YuZZ" target="_blank" class="badge cv-badge">
-                    <i class="fas fa-file-pdf"></i> Download CV
+                <span class="badge">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i> <span class="gpa-color">GPA: 3.38</span>
+                </span>
+                <a href="assets/resume.pdf" target="_blank" rel="noopener" class="badge cv-badge">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Download CV
                 </a>
             </div>
         </header>
 
         <!-- ========== ABOUT ========== -->
         <section class="fade-up">
-            <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
+            <h2><i class="fas fa-user-astronaut" aria-hidden="true"></i> About Me</h2>
             <div class="about-text">
                 <p>
                     Results-driven <strong>Artificial Intelligence Specialist</strong> with hands-on expertise in Natural Language Processing (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based platforms and Arabic fake news detection using AraBERT.
@@ -661,46 +758,46 @@
             </div>
         </section>
 
-        <!-- ========== SKILLS (No Percentages, No Bars) ========== -->
+        <!-- ========== SKILLS ========== -->
         <section class="fade-up">
-            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+            <h2><i class="fas fa-code" aria-hidden="true"></i> Technical Skills</h2>
             <div class="skills-tags">
-                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
-                <span class="skill-tag"><i class="fas fa-brain"></i> PyTorch</span>
-                <span class="skill-tag"><i class="fas fa-language"></i> AraBERT</span>
-                <span class="skill-tag"><i class="fas fa-eye"></i> OpenCV</span>
-                <span class="skill-tag"><i class="fas fa-robot"></i> Hugging Face</span>
-                <span class="skill-tag"><i class="fab fa-linux"></i> Linux / Git</span>
-                <span class="skill-tag"><i class="fas fa-database"></i> Docker</span>
-                <span class="skill-tag"><i class="fas fa-code"></i> C++</span>
+                <span class="skill-tag"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+                <span class="skill-tag"><i class="fas fa-brain" aria-hidden="true"></i> PyTorch</span>
+                <span class="skill-tag"><i class="fas fa-language" aria-hidden="true"></i> AraBERT</span>
+                <span class="skill-tag"><i class="fas fa-eye" aria-hidden="true"></i> OpenCV</span>
+                <span class="skill-tag"><i class="fas fa-robot" aria-hidden="true"></i> Hugging Face</span>
+                <span class="skill-tag"><i class="fab fa-linux" aria-hidden="true"></i> Linux / Git</span>
+                <span class="skill-tag"><i class="fas fa-database" aria-hidden="true"></i> Docker</span>
+                <span class="skill-tag"><i class="fas fa-code" aria-hidden="true"></i> C++</span>
             </div>
         </section>
 
         <!-- ========== CERTIFICATIONS ========== -->
         <section class="fade-up">
-            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <h2><i class="fas fa-certificate" aria-hidden="true"></i> Certifications</h2>
 
             <div class="cert-card">
                 <div class="cert-header">
                     <div class="cert-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     </div>
                     <div>
                         <h3>NVIDIA DLI Summer Training Program</h3>
-                        <p class="cert-org"><i class="fas fa-building"></i> Information Technology Institute (ITI)</p>
+                        <p class="cert-org"><i class="fas fa-building" aria-hidden="true"></i> Information Technology Institute (ITI)</p>
                     </div>
                 </div>
 
                 <div class="cert-body">
                     <p><strong>Generative AI (Beginner Level)</strong> — 35 Total Hours</p>
-                    <p class="cert-date"><i class="far fa-calendar-alt"></i> January 26 – February 10, 2026</p>
+                    <p class="cert-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> January 26 – February 10, 2026</p>
 
                     <div class="cert-topics">
-                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Python Fundamentals (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle"></i> AI For All: Basics to GenAI (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Generative AI Explained (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Prompt Engineering (17 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle"></i> Augment LLM Using RAG (9 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Python Fundamentals (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> AI For All: Basics to GenAI (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Generative AI Explained (3 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Prompt Engineering (17 hrs)</span>
+                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Augment LLM Using RAG (9 hrs)</span>
                     </div>
                 </div>
             </div>
@@ -708,174 +805,198 @@
 
         <!-- ========== PROJECTS ========== -->
         <section class="fade-up">
-            <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
+            <h2><i class="fas fa-rocket" aria-hidden="true"></i> Featured Projects</h2>
             <div class="projects-grid">
 
                 <!-- Fact Forge -->
                 <div class="project-card">
-                    <div class="icon">⚡</div>
+                    <div class="icon" aria-hidden="true">⚡</div>
                     <h3>Fact Forge</h3>
                     <p>
                         An end-to-end AI-powered platform for real-time fact-checking and claim verification.
                         Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. Fully deployed for interactive testing.
                     </p>
                     <div class="project-links">
-                        <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank"><i class="fab fa-github"></i> Repository</a>
-                        <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank"><i class="fas fa-globe"></i> Live Demo</a>
+                        <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Repository</a>
+                        <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle" aria-hidden="true"></i> Demo Video</a>
                     </div>
                     <div class="video-wrapper">
                         <iframe
-                        src="https://www.youtube.com/embed/Cqy3H0qDnRo"
+                        src="https://www.youtube.com/embed/Cqy3H0qDnRo?rel=0"
                         title="Fact Forge Demo"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
-                    </iframe>
+                        </iframe>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Mesdag AI -->
-            <div class="project-card">
-                <div class="icon">🧠</div>
-                <h3>Mesdag AI</h3>
+                <!-- Mesdaq AI -->
+                <div class="project-card">
+                    <div class="icon" aria-hidden="true">🧠</div>
+                    <h3>Mesdaq AI</h3>
+                    <p>
+                        An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
+                        Leverages deep linguistic analysis to combat misinformation across the Arab world.
+                    </p>
+                    <div class="collab"><i class="fas fa-users" aria-hidden="true"></i> Collaborated with Ibrahim Abdelsattar</div>
+                    <div class="project-links">
+                        <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Repository</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========== LEADERSHIP ========== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-trophy" aria-hidden="true"></i> Leadership</h2>
+            <div class="leadership-box">
+                <h3><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> GDG FUE Campus Co-organizer</h3>
                 <p>
-                    An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
-                    Leverages deep linguistic analysis to combat misinformation across the Arab world.
+                    Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
+                    at Future University. Bridged the gap between academic knowledge and industry practices by introducing students to modern AI stacks, cloud computing, and collaborative workflows.
                 </p>
-                <div class="collab"><i class="fas fa-users"></i> Collaborated with Ibrahim Abdelsattar</div>
-                <div class="project-links">
-                    <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank"><i class="fab fa-github"></i> Repository</a>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT ========== -->
+        <section class="fade-up">
+            <h2><i class="fas fa-paper-plane" aria-hidden="true"></i> Get In Touch</h2>
+            <div class="contact-box">
+                <p>Open to AI/ML roles, collaborations, and interesting problems. Feel free to reach out.</p>
+                <div class="contact-links">
+                    <a class="primary" href="mailto:yusuf.abozeid@gmail.com">
+                        <i class="fas fa-envelope" aria-hidden="true"></i> Email Me
+                    </a>
+                    <a class="secondary" href="https://www.linkedin.com/in/yusufabozeid" target="_blank" rel="noopener">
+                        <i class="fab fa-linkedin-in" aria-hidden="true"></i> Connect on LinkedIn
+                    </a>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- ========== FOOTER ========== -->
+        <footer>
+            &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
+        </footer>
 
-    <!-- ========== LEADERSHIP ========== -->
-    <section class="fade-up">
-        <h2><i class="fas fa-trophy"></i> Leadership</h2>
-        <div class="leadership-box">
-            <h3><i class="fas fa-chalkboard-teacher"></i> GDG FUE Campus Co-organizer</h3>
-            <p>
-                Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
-                at Future University. Bridged the gap between academic knowledge and industry practices by introducing students to modern AI stacks, cloud computing, and collaborative workflows.
-            </p>
-        </div>
-    </section>
+    </div>
+    <!-- /container -->
 
-    <!-- ========== FOOTER ========== -->
-    <footer>
-        &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
-    </footer>
+    <!-- ========== SCRIPTS ========== -->
+    <script>
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-</div>
-<!-- /container -->
+        // ----- 1. TYPING EFFECT -----
+        const typedTextElement = document.getElementById('typed-text');
+        const roles = [
+            'AI Developer',
+            'Generative AI Engineer',
+            'NLP & Computer Vision Specialist',
+            'LLM Application Developer',
+            'Open Source Contributor'
+        ];
 
-<!-- ========== SCRIPTS ========== -->
-<script>
-    // ----- 1. TYPING EFFECT -----
-    const typedTextElement = document.getElementById('typed-text');
-    const roles = [
-        'AI Developer',
-        'Generative AI Engineer',
-        'NLP & Computer Vision Specialist',
-        'LLM Application Developer',
-        'Open Source Contributor'
-    ];
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 120;
-
-    function typeEffect() {
-        const currentRole = roles[roleIndex];
-        if (!isDeleting) {
-            typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
-            if (charIndex === currentRole.length) {
-                isDeleting = true;
-                typingSpeed = 2000;
-            } else {
-                typingSpeed = 80 + Math.random() * 60;
-            }
+        if (prefersReducedMotion) {
+            // Show a single static role instead of animating
+            typedTextElement.textContent = roles[0];
         } else {
-            typedTextElement.textContent = currentRole.substring(0, charIndex);
-            charIndex--;
-            if (charIndex < 0) {
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typingSpeed = 200;
-            } else {
-                typingSpeed = 40 + Math.random() * 40;
+            let roleIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 120;
+
+            function typeEffect() {
+                const currentRole = roles[roleIndex];
+                if (!isDeleting) {
+                    typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
+                    charIndex++;
+                    if (charIndex === currentRole.length) {
+                        isDeleting = true;
+                        typingSpeed = 2000;
+                    } else {
+                        typingSpeed = 80 + Math.random() * 60;
+                    }
+                } else {
+                    typedTextElement.textContent = currentRole.substring(0, charIndex);
+                    charIndex--;
+                    if (charIndex < 0) {
+                        isDeleting = false;
+                        roleIndex = (roleIndex + 1) % roles.length;
+                        typingSpeed = 200;
+                    } else {
+                        typingSpeed = 40 + Math.random() * 40;
+                    }
+                }
+                setTimeout(typeEffect, typingSpeed);
             }
+            window.addEventListener('load', typeEffect);
         }
-        setTimeout(typeEffect, typingSpeed);
-    }
-    window.addEventListener('load', typeEffect);
 
-    // ----- 2. SCROLL ANIMATIONS (removed fill logic because no bars) -----
-    const fadeElements = document.querySelectorAll('.fade-up');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
-
-    fadeElements.forEach(el => observer.observe(el));
-
-    // ----- 3. SCROLL BACKGROUND EFFECT (Orbs + Gradient) -----
-    const orb1 = document.getElementById('orb1');
-    const orb2 = document.getElementById('orb2');
-    const orb3 = document.getElementById('orb3');
-    const bgGradient = document.getElementById('bg-gradient');
-
-    let lastScrollY = 0;
-    let ticking = false;
-
-    window.addEventListener('scroll', () => {
-        lastScrollY = window.scrollY;
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrollY = lastScrollY;
-                const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                const progress = Math.min(scrollY / maxScroll, 1);
-
-                orb1.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.04}px) scale(${1 + progress * 0.05})`;
-                orb2.style.transform = `translate(${-scrollY * 0.03}px, ${-scrollY * 0.06}px) scale(${1 + progress * 0.08})`;
-                orb3.style.transform = `translate(${scrollY * 0.015}px, ${scrollY * 0.08}px) scale(${1 + progress * 0.04})`;
-
-                const r1 = 0 + progress * 50;
-                const g1 = 199 - progress * 60;
-                const b1 = 183 - progress * 40;
-                const r2 = 79 + progress * 80;
-                const g2 = 172 - progress * 40;
-                const b2 = 254 - progress * 60;
-                const r3 = 168 - progress * 40;
-                const g3 = 85 + progress * 30;
-                const b3 = 247 + progress * 8;
-
-                bgGradient.style.background = `
-                            radial-gradient(circle at 20% 30%, rgba(${r1}, ${g1}, ${b1}, 0.1), transparent 50%),
-                            radial-gradient(circle at 80% 70%, rgba(${r2}, ${g2}, ${b2}, 0.12), transparent 50%),
-                            radial-gradient(circle at 40% 80%, rgba(${r3}, ${g3}, ${b3}, 0.08), transparent 50%)
-                        `;
-                ticking = false;
+        // ----- 2. SCROLL ANIMATIONS -----
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
             });
-            ticking = true;
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ----- 3 & 4. BACKGROUND / CURSOR EFFECTS (skipped if reduced motion) -----
+        if (!prefersReducedMotion) {
+            const orb1 = document.getElementById('orb1');
+            const orb2 = document.getElementById('orb2');
+            const orb3 = document.getElementById('orb3');
+            const bgGradient = document.getElementById('bg-gradient');
+
+            let lastScrollY = 0;
+            let ticking = false;
+
+            window.addEventListener('scroll', () => {
+                lastScrollY = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrollY = lastScrollY;
+                        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                        const progress = Math.min(scrollY / Math.max(maxScroll, 1), 1);
+
+                        orb1.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.04}px) scale(${1 + progress * 0.05})`;
+                        orb2.style.transform = `translate(${-scrollY * 0.03}px, ${-scrollY * 0.06}px) scale(${1 + progress * 0.08})`;
+                        orb3.style.transform = `translate(${scrollY * 0.015}px, ${scrollY * 0.08}px) scale(${1 + progress * 0.04})`;
+
+                        const r1 = 0 + progress * 50;
+                        const g1 = 199 - progress * 60;
+                        const b1 = 183 - progress * 40;
+                        const r2 = 79 + progress * 80;
+                        const g2 = 172 - progress * 40;
+                        const b2 = 254 - progress * 60;
+                        const r3 = 168 - progress * 40;
+                        const g3 = 85 + progress * 30;
+                        const b3 = 247 + progress * 8;
+
+                        bgGradient.style.background = `
+                                    radial-gradient(circle at 20% 30%, rgba(${r1}, ${g1}, ${b1}, 0.1), transparent 50%),
+                                    radial-gradient(circle at 80% 70%, rgba(${r2}, ${g2}, ${b2}, 0.12), transparent 50%),
+                                    radial-gradient(circle at 40% 80%, rgba(${r3}, ${g3}, ${b3}, 0.08), transparent 50%)
+                                `;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+
+            // Cursor glow now driven by `transform`, matching the CSS transition
+            // (previously set left/top directly, which the transition never covered
+            // and which forces a layout reflow on every mousemove).
+            const cursorGlow = document.getElementById('cursor-glow');
+            document.addEventListener('mousemove', (e) => {
+                cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+            });
         }
-    });
-
-    // ----- 4. MOUSE TRACKING GLOW -----
-    const cursorGlow = document.getElementById('cursor-glow');
-
-    document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
-    });
-
-    window.dispatchEvent(new Event('scroll'));
-</script>
+    </script>
 
 </body>
 </html>
