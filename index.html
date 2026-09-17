@@ -3,707 +3,126 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Yusuf Abozeid | AI Developer</title>
-
-    <!-- SEO / Social preview -->
-    <meta name="description" content="Yusuf Adel Abouzeid — Artificial Intelligence Specialist focused on NLP and Computer Vision. Builder of RAG platforms and Arabic fake news detection systems using AraBERT." />
+    <title>Yusuf Abozeid | AI &amp; Embedded Systems Engineer</title>
+    <meta name="description" content="Yusuf Adel Abouzeid — AI & Embedded Systems Engineer specializing in NLP, LLMs, and Edge AI. 1st Place National AI Hackathon Winner. Top 6 Finalist RoboDam 2026." />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Yusuf Abozeid | AI Developer" />
-    <meta property="og:description" content="Artificial Intelligence Specialist focused on NLP and Computer Vision. Builder of RAG platforms and Arabic fake news detection systems using AraBERT." />
+    <meta property="og:title" content="Yusuf Abozeid | AI & Embedded Systems Engineer" />
+    <meta property="og:description" content="AI & Embedded Systems Engineer specializing in NLP, LLMs, and Edge AI. Builder of RoboApex, EVA-AI, and award-winning AI platforms." />
     <meta property="og:image" content="assets/avatar.jpg" />
     <meta property="og:url" content="https://yusufabozeid.github.io/Yusuf-portfolio/" />
     <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Favicon: inline teal "Y" monogram, no external asset needed -->
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23080b12'/%3E%3Ctext x='50' y='68' font-size='58' font-family='Arial, sans-serif' font-weight='bold' fill='%2300c7b7' text-anchor='middle'%3EY%3C/text%3E%3C/svg%3E" />
-
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ---------- RESET & BASE ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #080b12;
-            color: #c9d1d9;
-            line-height: 1.6;
-            padding: 2rem 1rem;
-            overflow-x: hidden;
-            min-height: 200vh;
-            position: relative;
-            cursor: default;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Sora', 'Segoe UI', sans-serif;
-        }
-
-        /* ---------- BACKGROUND LAYERS ---------- */
-        #bg-gradient {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            background: radial-gradient(circle at 20% 30%, rgba(0, 199, 183, 0.08), transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(79, 172, 254, 0.1), transparent 50%),
-                radial-gradient(circle at 40% 80%, rgba(168, 85, 247, 0.06), transparent 50%);
-            transition: background 0.8s ease;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                radial-gradient(circle at 2px 2px, rgba(0, 199, 183, 0.06) 1px, transparent 0),
-                radial-gradient(circle at 50px 50px, rgba(79, 172, 254, 0.03) 1px, transparent 0);
-            background-size: 60px 60px, 30px 30px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* ---------- MOUSE GLOW ---------- */
-        #cursor-glow {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(0, 199, 183, 0.08), transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: transform 0.15s cubic-bezier(0.15, 0.85, 0.35, 1);
-            will-change: transform;
-            filter: blur(80px);
-            opacity: 0.6;
-        }
-
-        /* ---------- ORBS ---------- */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            filter: blur(120px);
-            opacity: 0.2;
-            z-index: 0;
-            pointer-events: none;
-            transition: transform 0.2s cubic-bezier(0.15, 0.85, 0.35, 1);
-            will-change: transform;
-        }
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            background: #00c7b7;
-            top: -15%;
-            left: -10%;
-        }
-        .orb-2 {
-            width: 600px;
-            height: 600px;
-            background: #4facfe;
-            bottom: -20%;
-            right: -10%;
-        }
-        .orb-3 {
-            width: 400px;
-            height: 400px;
-            background: #a855f7;
-            top: 50%;
-            left: 50%;
-        }
-
-        /* ---------- CONTAINER ---------- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* ---------- SCROLL ANIMATIONS ---------- */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.2, 0.9, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ---------- HERO ---------- */
-        .hero {
-            text-align: center;
-            padding: 2rem 0 3rem;
-            border-bottom: 1px solid rgba(48, 54, 61, 0.3);
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #00c7b7;
-            box-shadow: 0 0 40px rgba(0, 199, 183, 0.2);
-            margin-bottom: 1.2rem;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            background: #11161f;
-        }
-        .avatar:hover {
-            transform: scale(1.05) rotate(2deg);
-            box-shadow: 0 0 70px rgba(0, 199, 183, 0.4);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f0f6fc 0%, #00c7b7 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
-        }
-
-        .typing-wrapper {
-            height: 2.8rem;
-            margin-top: 0.2rem;
-        }
-        .typing-text {
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #b1bac4;
-            white-space: nowrap;
-        }
-        .typing-text .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1.4rem;
-            background: #00c7b7;
-            margin-left: 4px;
-            animation: blink 0.8s step-end infinite;
-            vertical-align: text-bottom;
-        }
-        @keyframes blink {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0;
-            }
-        }
-
-        .hero .location {
-            font-size: 1rem;
-            color: #99a3b0;
-            margin-top: 0.5rem;
-        }
-        .hero .location i {
-            color: #00c7b7;
-            margin-right: 6px;
-        }
-
-        /* ---------- BADGES ---------- */
-        .badges {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.7rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(33, 38, 45, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #c9d1d9;
-            text-decoration: none;
-            border: 1px solid rgba(48, 54, 61, 0.4);
-            transition: all 0.3s ease;
-        }
-        a.badge:hover {
-            border-color: #00c7b7;
-            background: rgba(0, 199, 183, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.15);
-        }
-        .badge i {
-            color: #00c7b7;
-        }
-        .badge .gpa-color {
-            color: #4CAF50;
-        }
-        /* Non-interactive badge (GPA) - no hover affordance, not a link */
-        span.badge {
-            cursor: default;
-        }
-
-        .cv-badge {
-            border-color: rgba(255, 107, 107, 0.4);
-            background: rgba(255, 107, 107, 0.08);
-        }
-        .cv-badge i {
-            color: #ff6b6b;
-        }
-        .cv-badge:hover {
-            border-color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.15);
-            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.2);
-        }
-
-        /* ---------- SECTIONS ---------- */
-        section {
-            margin: 4rem 0;
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #f0f6fc;
-            margin-bottom: 1.8rem;
-            border-bottom: 2px solid rgba(33, 38, 45, 0.6);
-            padding-bottom: 0.6rem;
-            display: inline-block;
-            background: linear-gradient(135deg, #f0f6fc, #00c7b7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        h2 i {
-            color: #00c7b7;
-            margin-right: 10px;
-            -webkit-text-fill-color: #00c7b7;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            color: #b1bac4;
-            max-width: 850px;
-            background: rgba(22, 27, 34, 0.4);
-            padding: 1.5rem 2rem;
-            border-radius: 16px;
-            border-left: 4px solid #00c7b7;
-            backdrop-filter: blur(4px);
-        }
-        .about-text strong {
-            color: #f0f6fc;
-        }
-
-        /* ---------- SKILLS ---------- */
-        .skills-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        .skill-tag {
-            background: rgba(22, 27, 34, 0.5);
-            backdrop-filter: blur(4px);
-            padding: 0.6rem 1.5rem;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #c9d1d9;
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        .skill-tag:hover {
-            border-color: #00c7b7;
-            background: rgba(0, 199, 183, 0.08);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        .skill-tag i {
-            color: #00c7b7;
-            font-size: 1rem;
-        }
-
-        /* ---------- CERTIFICATION CARD ---------- */
-        .cert-card {
-            background: rgba(22, 27, 34, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            border-radius: 20px;
-            padding: 1.8rem 2rem;
-            transition: all 0.3s ease;
-            border-left: 4px solid #00c7b7;
-        }
-        .cert-card:hover {
-            border-color: #00c7b7;
-            transform: translateY(-4px);
-            box-shadow: 0 10px 30px rgba(0, 199, 183, 0.08);
-        }
-        .cert-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 0.8rem;
-        }
-        .cert-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 199, 183, 0.15);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: #00c7b7;
-            flex-shrink: 0;
-        }
-        .cert-header h3 {
-            font-size: 1.3rem;
-            color: #f0f6fc;
-            margin-bottom: 0.1rem;
-        }
-        .cert-org {
-            color: #99a3b0;
-            font-size: 0.9rem;
-        }
-        .cert-org i {
-            color: #00c7b7;
-            margin-right: 6px;
-        }
-        .cert-body p {
-            color: #b1bac4;
-            margin-bottom: 0.3rem;
-        }
-        .cert-body strong {
-            color: #f0f6fc;
-        }
-        .cert-date {
-            color: #99a3b0 !important;
-            font-size: 0.9rem;
-        }
-        .cert-date i {
-            color: #4CAF50;
-            margin-right: 6px;
-        }
-        .cert-topics {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.8rem;
-        }
-        .topic-tag {
-            background: rgba(0, 199, 183, 0.08);
-            border: 1px solid rgba(0, 199, 183, 0.15);
-            padding: 0.3rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #b1bac4;
-            transition: all 0.2s;
-        }
-        .topic-tag:hover {
-            background: rgba(0, 199, 183, 0.15);
-            border-color: #00c7b7;
-            color: #f0f6fc;
-        }
-        .topic-tag i {
-            color: #4CAF50;
-            margin-right: 4px;
-            font-size: 0.7rem;
-        }
-
-        /* ---------- PROJECT CARDS ---------- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(22, 27, 34, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            border-radius: 20px;
-            padding: 1.8rem 1.5rem;
-            transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #00c7b7, #4facfe, #a855f7);
-            background-size: 300% 300%;
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.6s ease;
-        }
-        .project-card:hover::before {
-            opacity: 0.8;
-            animation: gradientMove 3s ease infinite;
-        }
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: transparent;
-        }
-
-        .project-card .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .project-card h3 {
-            font-size: 1.5rem;
-            color: #f0f6fc;
-            margin-bottom: 0.5rem;
-        }
-        .project-card p {
-            color: #b1bac4;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-        .project-card .collab {
-            font-size: 0.85rem;
-            color: #99a3b0;
-            margin-bottom: 1rem;
-        }
-        .project-card .collab i {
-            color: #00c7b7;
-        }
-
-        .project-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 0.5rem;
-        }
-        .project-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.3rem 1.2rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: 1px solid rgba(48, 54, 61, 0.4);
-            color: #c9d1d9;
-            background: rgba(13, 17, 23, 0.5);
-            transition: 0.3s ease;
-        }
-        .project-links a:hover {
-            border-color: #00c7b7;
-            background: rgba(0, 199, 183, 0.1);
-            box-shadow: 0 0 25px rgba(0, 199, 183, 0.1);
-        }
-        .project-links a i {
-            color: #00c7b7;
-        }
-        .project-links .live i {
-            color: #4CAF50;
-        }
-
-        /* ---------- VIDEO IFRAME ---------- */
-        .video-wrapper {
-            margin-top: 1.2rem;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            background: #000;
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-        }
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* ---------- LEADERSHIP ---------- */
-        .leadership-box {
-            background: rgba(22, 27, 34, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            border-radius: 20px;
-            padding: 1.8rem 2rem;
-            transition: all 0.3s;
-        }
-        .leadership-box:hover {
-            border-color: #00c7b7;
-        }
-        .leadership-box h3 {
-            color: #f0f6fc;
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
-        }
-        .leadership-box h3 i {
-            color: #00c7b7;
-            margin-right: 10px;
-        }
-        .leadership-box p {
-            color: #b1bac4;
-        }
-
-        /* ---------- CONTACT CTA ---------- */
-        .contact-box {
-            text-align: center;
-            background: rgba(22, 27, 34, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(48, 54, 61, 0.3);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-        }
-        .contact-box p {
-            color: #b1bac4;
-            max-width: 500px;
-            margin: 0 auto 1.5rem;
-        }
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-        .contact-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.6rem;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .contact-links .primary {
-            background: linear-gradient(135deg, #00c7b7, #4facfe);
-            color: #080b12;
-        }
-        .contact-links .primary:hover {
-            box-shadow: 0 8px 25px rgba(0, 199, 183, 0.35);
-            transform: translateY(-3px);
-        }
-        .contact-links .secondary {
-            border: 1px solid rgba(48, 54, 61, 0.5);
-            color: #c9d1d9;
-            background: rgba(13, 17, 23, 0.5);
-        }
-        .contact-links .secondary:hover {
-            border-color: #00c7b7;
-            transform: translateY(-3px);
-        }
-
-        /* ---------- FOOTER ---------- */
-        footer {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(48, 54, 61, 0.3);
-            text-align: center;
-            color: #99a3b0;
-            font-size: 0.9rem;
-        }
-        footer span {
-            color: #00c7b7;
-        }
-
-        /* ---------- RESPONSIVE ---------- */
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .typing-text {
-                font-size: 1rem;
-                white-space: normal;
-            }
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-            .badges {
-                gap: 0.4rem;
-            }
-            .badge {
-                font-size: 0.75rem;
-                padding: 0.3rem 0.8rem;
-            }
-            .about-text {
-                padding: 1rem;
-            }
-            .skills-tags {
-                gap: 0.6rem;
-            }
-            .skill-tag {
-                padding: 0.4rem 1rem;
-                font-size: 0.8rem;
-            }
-            .cert-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            #cursor-glow {
-                display: none;
-            }
-        }
-
-        /* ---------- REDUCED MOTION ---------- */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.001ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.001ms !important;
-                scroll-behavior: auto !important;
-            }
-            .fade-up {
-                opacity: 1;
-                transform: none;
-            }
-            #cursor-glow,
-            .orb {
-                display: none;
-            }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter','Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#080b12;color:#c9d1d9;line-height:1.6;padding:2rem 1rem;overflow-x:hidden;min-height:200vh;position:relative;cursor:default}
+        h1,h2,h3{font-family:'Sora','Segoe UI',sans-serif}
+        #bg-gradient{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;background:radial-gradient(circle at 20% 30%,rgba(0,199,183,.08),transparent 50%),radial-gradient(circle at 80% 70%,rgba(79,172,254,.1),transparent 50%),radial-gradient(circle at 40% 80%,rgba(168,85,247,.06),transparent 50%);transition:background .8s ease}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background-image:radial-gradient(circle at 2px 2px,rgba(0,199,183,.06) 1px,transparent 0),radial-gradient(circle at 50px 50px,rgba(79,172,254,.03) 1px,transparent 0);background-size:60px 60px,30px 30px;pointer-events:none;z-index:0}
+        #cursor-glow{position:fixed;top:0;left:0;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,199,183,.08),transparent 70%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:transform .15s cubic-bezier(.15,.85,.35,1);will-change:transform;filter:blur(80px);opacity:.6}
+        .orb{position:fixed;border-radius:50%;filter:blur(120px);opacity:.2;z-index:0;pointer-events:none;transition:transform .2s cubic-bezier(.15,.85,.35,1);will-change:transform}
+        .orb-1{width:500px;height:500px;background:#00c7b7;top:-15%;left:-10%}
+        .orb-2{width:600px;height:600px;background:#4facfe;bottom:-20%;right:-10%}
+        .orb-3{width:400px;height:400px;background:#a855f7;top:50%;left:50%}
+        .container{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+        .fade-up{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.2,.9,.3,1)}
+        .fade-up.visible{opacity:1;transform:translateY(0)}
+        .hero{text-align:center;padding:2rem 0 3rem;border-bottom:1px solid rgba(48,54,61,.3)}
+        .avatar{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #00c7b7;box-shadow:0 0 40px rgba(0,199,183,.2);margin-bottom:1.2rem;transition:transform .4s ease,box-shadow .4s ease;background:#11161f}
+        .avatar:hover{transform:scale(1.05) rotate(2deg);box-shadow:0 0 70px rgba(0,199,183,.4)}
+        .hero h1{font-size:3rem;font-weight:700;background:linear-gradient(135deg,#f0f6fc 0%,#00c7b7 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.5px}
+        .typing-wrapper{height:2.8rem;margin-top:.2rem}
+        .typing-text{font-size:1.3rem;font-weight:500;color:#b1bac4;white-space:nowrap}
+        .typing-text .cursor{display:inline-block;width:3px;height:1.4rem;background:#00c7b7;margin-left:4px;animation:blink .8s step-end infinite;vertical-align:text-bottom}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+        .hero .location{font-size:1rem;color:#99a3b0;margin-top:.5rem}
+        .hero .location i{color:#00c7b7;margin-right:6px}
+        .badges{margin-top:1.5rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.7rem}
+        .badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(33,38,45,.6);backdrop-filter:blur(8px);padding:.4rem 1.2rem;border-radius:30px;font-size:.85rem;font-weight:500;color:#c9d1d9;text-decoration:none;border:1px solid rgba(48,54,61,.4);transition:all .3s ease}
+        a.badge:hover{border-color:#00c7b7;background:rgba(0,199,183,.1);transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,199,183,.15)}
+        .badge i{color:#00c7b7}
+        .badge .gpa-color{color:#4CAF50}
+        span.badge{cursor:default}
+        .cv-badge{border-color:rgba(255,107,107,.4);background:rgba(255,107,107,.08)}
+        .cv-badge i{color:#ff6b6b}
+        .cv-badge:hover{border-color:#ff6b6b;background:rgba(255,107,107,.15);box-shadow:0 8px 25px rgba(255,107,107,.2)}
+        section{margin:4rem 0}
+        h2{font-size:2.2rem;font-weight:600;color:#f0f6fc;margin-bottom:1.8rem;border-bottom:2px solid rgba(33,38,45,.6);padding-bottom:.6rem;display:inline-block;background:linear-gradient(135deg,#f0f6fc,#00c7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        h2 i{color:#00c7b7;margin-right:10px;-webkit-text-fill-color:#00c7b7}
+        .about-text{font-size:1.05rem;line-height:1.8;color:#b1bac4;max-width:900px}
+        .about-text strong{color:#e6edf3}
+        /* AWARDS */
+        .awards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:1.5rem}
+        .award-card{background:rgba(33,38,45,.5);backdrop-filter:blur(10px);border:1px solid rgba(255,193,7,.25);border-radius:16px;padding:1.5rem 1.8rem;transition:all .4s ease;position:relative;overflow:hidden}
+        .award-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ffc107,#ff9800,#ffd54f);border-radius:16px 16px 0 0}
+        .award-card:hover{border-color:rgba(255,193,7,.5);transform:translateY(-4px);box-shadow:0 12px 40px rgba(255,193,7,.12)}
+        .award-card .award-icon{font-size:2.2rem;margin-bottom:.5rem}
+        .award-card h3{font-size:1.15rem;color:#ffd54f;margin-bottom:.3rem}
+        .award-card .award-org{font-size:.88rem;color:#99a3b0;margin-bottom:.6rem}
+        .award-card .award-org i{color:#ffc107;margin-right:4px}
+        .award-card p.award-detail{font-size:.95rem;color:#b1bac4;line-height:1.6}
+        /* SKILLS */
+        .skills-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+        .skill-group{background:rgba(33,38,45,.4);border:1px solid rgba(48,54,61,.4);border-radius:12px;padding:1rem 1.2rem}
+        .skill-group h4{font-size:.85rem;color:#00c7b7;text-transform:uppercase;letter-spacing:1px;margin-bottom:.6rem;font-family:'Sora',sans-serif}
+        .skill-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+        .skill-tag{display:inline-flex;align-items:center;gap:.35rem;background:rgba(0,199,183,.08);border:1px solid rgba(0,199,183,.15);padding:.3rem .8rem;border-radius:8px;font-size:.82rem;color:#c9d1d9;transition:all .3s ease}
+        .skill-tag:hover{border-color:#00c7b7;background:rgba(0,199,183,.15);transform:translateY(-2px)}
+        .skill-tag i{color:#00c7b7;font-size:.75rem}
+        /* PROJECTS */
+        .projects-grid{display:grid;grid-template-columns:1fr;gap:2rem}
+        .project-card{background:rgba(33,38,45,.5);backdrop-filter:blur(10px);border:1px solid rgba(48,54,61,.4);border-radius:16px;padding:1.8rem;transition:all .4s ease;position:relative}
+        .project-card:hover{border-color:rgba(0,199,183,.4);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,199,183,.1)}
+        .project-card .icon{font-size:2rem;margin-bottom:.6rem}
+        .project-card h3{font-size:1.3rem;color:#f0f6fc;margin-bottom:.4rem}
+        .project-card>p{font-size:.95rem;color:#b1bac4;line-height:1.7;margin-bottom:.8rem}
+        .project-award{display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,193,7,.12);border:1px solid rgba(255,193,7,.3);color:#ffd54f;font-size:.78rem;font-weight:600;padding:.25rem .7rem;border-radius:20px;margin-bottom:.8rem}
+        .tech-pills{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+        .tech-pill{background:rgba(0,199,183,.08);border:1px solid rgba(0,199,183,.12);color:#8bd5cf;font-size:.75rem;padding:.2rem .6rem;border-radius:6px}
+        .project-links{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:1rem}
+        .project-links a{display:inline-flex;align-items:center;gap:.4rem;font-size:.88rem;color:#c9d1d9;text-decoration:none;padding:.4rem 1rem;border-radius:8px;border:1px solid rgba(48,54,61,.5);transition:all .3s ease}
+        .project-links a:hover{border-color:#00c7b7;color:#00c7b7;background:rgba(0,199,183,.08)}
+        .project-links a.live{border-color:rgba(255,107,107,.3);color:#ff8a8a}
+        .project-links a.live:hover{border-color:#ff6b6b;background:rgba(255,107,107,.1);color:#ff6b6b}
+        .video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;margin-top:.5rem;border:1px solid rgba(48,54,61,.3)}
+        .video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+        /* CERTS */
+        .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+        .cert-card{background:rgba(33,38,45,.5);backdrop-filter:blur(10px);border:1px solid rgba(48,54,61,.4);border-radius:14px;padding:1.3rem 1.5rem;transition:all .3s ease}
+        .cert-card:hover{border-color:rgba(0,199,183,.3);transform:translateY(-3px)}
+        .cert-card h3{font-size:1rem;color:#f0f6fc;margin-bottom:.3rem}
+        .cert-card .cert-org{font-size:.85rem;color:#99a3b0;margin-bottom:.4rem}
+        .cert-card .cert-org i{color:#00c7b7;margin-right:4px}
+        .cert-card .cert-detail{font-size:.85rem;color:#b1bac4}
+        /* LEADERSHIP */
+        .leadership-box{background:rgba(33,38,45,.5);backdrop-filter:blur(10px);border:1px solid rgba(48,54,61,.4);border-radius:14px;padding:1.5rem 1.8rem}
+        .leadership-box h3{font-size:1.1rem;color:#f0f6fc;margin-bottom:.5rem}
+        .leadership-box h3 i{color:#00c7b7;margin-right:8px}
+        .leadership-box p{font-size:.95rem;color:#b1bac4;line-height:1.7}
+        /* CONTACT */
+        .contact-box{background:rgba(33,38,45,.5);backdrop-filter:blur(10px);border:1px solid rgba(48,54,61,.4);border-radius:14px;padding:2rem;text-align:center}
+        .contact-box p{font-size:1.05rem;color:#b1bac4;margin-bottom:1.2rem}
+        .contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+        .contact-links a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.5rem;border-radius:10px;font-weight:500;text-decoration:none;transition:all .3s ease;font-size:.95rem}
+        .contact-links a.primary{background:linear-gradient(135deg,#00c7b7,#00a89c);color:#080b12;border:none}
+        .contact-links a.primary:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,199,183,.3)}
+        .contact-links a.secondary{border:1px solid rgba(0,199,183,.3);color:#00c7b7;background:transparent}
+        .contact-links a.secondary:hover{background:rgba(0,199,183,.1);transform:translateY(-3px)}
+        footer{text-align:center;padding:3rem 0 1rem;color:#99a3b0;font-size:.85rem;border-top:1px solid rgba(48,54,61,.3);margin-top:3rem}
+        footer span{color:#00c7b7}
+        @media(max-width:768px){
+            .hero h1{font-size:2rem}
+            .typing-text{font-size:1rem}
+            .awards-grid,.skills-section,.certs-grid{grid-template-columns:1fr}
+            .project-card{padding:1.2rem}
+            h2{font-size:1.6rem}
         }
     </style>
 </head>
 <body>
-
-    <!-- ========== BACKGROUND ========== -->
     <div id="bg-gradient"></div>
     <div class="orb orb-1" id="orb1"></div>
     <div class="orb orb-2" id="orb2"></div>
@@ -711,292 +130,190 @@
     <div id="cursor-glow"></div>
 
     <div class="container">
-
-        <!-- ========== HERO ========== -->
+        <!-- HERO -->
         <header class="hero fade-up visible">
-            <img class="avatar"
-            src="assets/avatar.jpg"
-            alt="Yusuf Abozeid" />
-
+            <img class="avatar" src="assets/avatar.jpg" alt="Yusuf Abozeid" />
             <h1>Yusuf Adel Abouzeid</h1>
-
             <div class="typing-wrapper">
                 <span class="typing-text" id="typed-text"></span><span class="cursor" aria-hidden="true"></span>
             </div>
-
             <p class="location">
                 <i class="fas fa-map-pin" aria-hidden="true"></i> Giza, Egypt &nbsp;|&nbsp;
                 <i class="fas fa-envelope" aria-hidden="true"></i> yusuf.abozeid@gmail.com
             </p>
-
             <div class="badges">
-                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank" rel="noopener">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank" rel="noopener">
-                    <i class="fab fa-github" aria-hidden="true"></i> GitHub
-                </a>
-                <span class="badge">
-                    <i class="fas fa-graduation-cap" aria-hidden="true"></i> <span class="gpa-color">GPA: 3.38</span>
-                </span>
-                <a href="assets/resume.pdf" target="_blank" rel="noopener" class="badge cv-badge">
-                    <i class="fas fa-file-pdf" aria-hidden="true"></i> Download CV
-                </a>
+                <a href="https://www.linkedin.com/in/yusufabozeid" class="badge" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                <a href="https://github.com/YusufAbozeid" class="badge" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
+                <span class="badge"><i class="fas fa-graduation-cap"></i> <span class="gpa-color">GPA: 3.38</span></span>
+                <a href="assets/resume.pdf" target="_blank" rel="noopener" class="badge cv-badge"><i class="fas fa-file-pdf"></i> Download CV</a>
             </div>
         </header>
 
-        <!-- ========== ABOUT ========== -->
+        <!-- ABOUT -->
         <section class="fade-up">
-            <h2><i class="fas fa-user-astronaut" aria-hidden="true"></i> About Me</h2>
+            <h2><i class="fas fa-user-astronaut"></i> About Me</h2>
             <div class="about-text">
-                <p>
-                    Results-driven <strong>Artificial Intelligence Specialist</strong> with hands-on expertise in Natural Language Processing (NLP) and Computer Vision. Proven track record in developing high-accuracy AI systems, including RAG-based platforms and Arabic fake news detection using AraBERT.
-                </p>
-                <p style="margin-top: 0.8rem;">
-                    Certified by <strong>NVIDIA DLI</strong> and <strong>ITI</strong> in Generative AI and LLM applications. Dedicated to building ethical, trustworthy AI solutions and bridging the gap between technical innovation and real-world deployment.
-                </p>
+                <p>High-impact <strong>AI &amp; Embedded Systems Engineer</strong> specializing in Natural Language Processing (NLP), Large Language Models (LLMs), and Edge AI. <strong>1st Place Winner</strong> at the National AI Hackathon for engineering EVA-AI, a zero-hallucination Clinical Decision Support RAG platform, and <strong>Top 6 National Finalist</strong> at RoboDam 2026 for building RoboApex, an autonomous ESP-NOW microgrid gateway with embedded neural cortex.</p>
+                <p style="margin-top:.8rem">Proven expertise in fine-tuning transformer architectures (DeBERTa-v3, AraBERT), hybrid search optimization (Dense + BM25 + Cross-Encoder Reranking), distributed IoT mesh networks, and deploying production RESTful APIs. <strong>NVIDIA DLI</strong> and <strong>ITI</strong> certified in Generative AI.</p>
             </div>
         </section>
 
-        <!-- ========== SKILLS ========== -->
+        <!-- AWARDS -->
         <section class="fade-up">
-            <h2><i class="fas fa-code" aria-hidden="true"></i> Technical Skills</h2>
-            <div class="skills-tags">
-                <span class="skill-tag"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
-                <span class="skill-tag"><i class="fas fa-brain" aria-hidden="true"></i> PyTorch</span>
-                <span class="skill-tag"><i class="fas fa-language" aria-hidden="true"></i> AraBERT</span>
-                <span class="skill-tag"><i class="fas fa-eye" aria-hidden="true"></i> OpenCV</span>
-                <span class="skill-tag"><i class="fas fa-robot" aria-hidden="true"></i> Hugging Face</span>
-                <span class="skill-tag"><i class="fab fa-linux" aria-hidden="true"></i> Linux / Git</span>
-                <span class="skill-tag"><i class="fas fa-database" aria-hidden="true"></i> Docker</span>
-                <span class="skill-tag"><i class="fas fa-code" aria-hidden="true"></i> C++</span>
-            </div>
-        </section>
-
-        <!-- ========== CERTIFICATIONS ========== -->
-        <section class="fade-up">
-            <h2><i class="fas fa-certificate" aria-hidden="true"></i> Certifications</h2>
-
-            <div class="cert-card">
-                <div class="cert-header">
-                    <div class="cert-icon">
-                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
-                    </div>
-                    <div>
-                        <h3>NVIDIA DLI Summer Training Program</h3>
-                        <p class="cert-org"><i class="fas fa-building" aria-hidden="true"></i> Information Technology Institute (ITI)</p>
-                    </div>
+            <h2><i class="fas fa-trophy"></i> Honors &amp; Awards</h2>
+            <div class="awards-grid">
+                <div class="award-card">
+                    <div class="award-icon">&#127942;</div>
+                    <h3>Top 6 National Finalist &mdash; RoboDam 2026</h3>
+                    <p class="award-org"><i class="fas fa-university"></i> Damanhour University &amp; ITI &nbsp;|&nbsp; Sep 2026</p>
+                    <p class="award-detail">Handpicked by the committee among the <strong>TOP 6 standout projects</strong> across Egypt (out of 65 university teams from 21 universities) to demonstrate RoboApex live before H.E. the Minister of Higher Education &amp; Scientific Research and university leadership.</p>
                 </div>
-
-                <div class="cert-body">
-                    <p><strong>Generative AI (Beginner Level)</strong> — 35 Total Hours</p>
-                    <p class="cert-date"><i class="far fa-calendar-alt" aria-hidden="true"></i> January 26 – February 10, 2026</p>
-
-                    <div class="cert-topics">
-                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Python Fundamentals (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> AI For All: Basics to GenAI (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Generative AI Explained (3 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Prompt Engineering (17 hrs)</span>
-                        <span class="topic-tag"><i class="fas fa-check-circle" aria-hidden="true"></i> Augment LLM Using RAG (9 hrs)</span>
-                    </div>
+                <div class="award-card">
+                    <div class="award-icon">&#129351;</div>
+                    <h3>1st Place Winner &mdash; National AI Hackathon</h3>
+                    <p class="award-org"><i class="fas fa-building"></i> Orange Digital Center, CREATIVA, ITIDA, TIEC &amp; INSTANT &nbsp;|&nbsp; Aug 2026</p>
+                    <p class="award-detail">Awarded <strong>1st Place</strong> among top competing teams for developing EVA-AI, an evidence-grounded clinical decision-support platform featuring hybrid search reranking, multi-tier query caching, and a 5-layer safety guardrail workflow.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ========== PROJECTS ========== -->
+        <!-- SKILLS -->
         <section class="fade-up">
-            <h2><i class="fas fa-rocket" aria-hidden="true"></i> Featured Projects</h2>
+            <h2><i class="fas fa-code"></i> Technical Skills</h2>
+            <div class="skills-section">
+                <div class="skill-group"><h4>Programming &amp; Embedded</h4><div class="skill-tags"><span class="skill-tag"><i class="fab fa-python"></i> Python</span><span class="skill-tag">C/C++ (ESP32)</span><span class="skill-tag">SQL</span><span class="skill-tag">TypeScript</span><span class="skill-tag">Java</span><span class="skill-tag">HTML/CSS</span></div></div>
+                <div class="skill-group"><h4>AI &amp; LLMs</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-brain"></i> RAG</span><span class="skill-tag">LLaMA 3.3 70B</span><span class="skill-tag">Claude</span><span class="skill-tag">Gemini</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Grounded Generation</span></div></div>
+                <div class="skill-group"><h4>NLP &amp; Transformers</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-robot"></i> Hugging Face</span><span class="skill-tag">AraBERT</span><span class="skill-tag">DeBERTa-v3</span><span class="skill-tag">Cross-Encoder</span><span class="skill-tag">Fine-Tuning</span></div></div>
+                <div class="skill-group"><h4>IoT &amp; Edge AI</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-microchip"></i> ESP-NOW Mesh</span><span class="skill-tag">SCADA</span><span class="skill-tag">Edge Neural Cortex</span><span class="skill-tag">Peak Shaving</span><span class="skill-tag">Solar ATS</span></div></div>
+                <div class="skill-group"><h4>Search &amp; Retrieval</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-search"></i> BM25</span><span class="skill-tag">ChromaDB</span><span class="skill-tag">RRF</span><span class="skill-tag">Multi-Tier Caching</span><span class="skill-tag">Cosine Similarity</span></div></div>
+                <div class="skill-group"><h4>Computer Vision &amp; ML</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-eye"></i> PyTorch</span><span class="skill-tag">OpenCV</span><span class="skill-tag">CNNs</span><span class="skill-tag">Object Detection</span></div></div>
+                <div class="skill-group"><h4>DevOps &amp; Frameworks</h4><div class="skill-tags"><span class="skill-tag"><i class="fas fa-server"></i> FastAPI</span><span class="skill-tag">Flask</span><span class="skill-tag">Next.js 15</span><span class="skill-tag">React</span><span class="skill-tag">Docker</span><span class="skill-tag">Git</span><span class="skill-tag">Linux</span></div></div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="fade-up">
+            <h2><i class="fas fa-rocket"></i> Featured Projects</h2>
             <div class="projects-grid">
+
+                <!-- RoboApex -->
+                <div class="project-card">
+                    <div class="icon">&#9889;</div>
+                    <div class="project-award"><i class="fas fa-trophy"></i> Top 6 National Finalist</div>
+                    <h3>RoboApex &mdash; Autonomous Smart Microgrid Gateway &amp; Edge AI Energy Manager</h3>
+                    <p>Engineered a decentralized Home Energy Management System across distributed ESP32 nodes using ESP-NOW peer-to-peer mesh protocol (&lt;3ms latency, zero internet dependency). Features an Edge AI Neural Cortex with predictive thermal modeling (dT/dt), dynamic peak shaving for EV charger protection, and a Groq LLaMA 3.3 70B conversational SCADA dashboard.</p>
+                    <div class="tech-pills"><span class="tech-pill">ESP32</span><span class="tech-pill">C++</span><span class="tech-pill">ESP-NOW</span><span class="tech-pill">Edge AI</span><span class="tech-pill">Groq LLaMA 3.3</span><span class="tech-pill">SCADA</span></div>
+                    <div class="project-links">
+                        <a href="https://github.com/YusufAbozeid/RobApex" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://drive.google.com/file/d/1ai0WrkRb9TOcRsM_DTA5I05tWIuzHTQt/view" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Demo Video</a>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://drive.google.com/file/d/1ai0WrkRb9TOcRsM_DTA5I05tWIuzHTQt/preview" title="RoboApex Demo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <!-- EVA-AI -->
+                <div class="project-card">
+                    <div class="icon">&#127973;</div>
+                    <div class="project-award"><i class="fas fa-medal"></i> 1st Place National Hackathon</div>
+                    <h3>EVA-AI &mdash; Zero-Hallucination Clinical Decision Support Platform</h3>
+                    <p>Architected a zero-hallucination Clinical Decision Support RAG system over official medical guidelines (NICE NG243), achieving &ge;80% Hit-Rate and &ge;0.82 Precision@K. Features dual-engine hybrid retrieval (Dense ChromaDB + Okapi BM25 via RRF k=60) with Cross-Encoder Transformer Reranking, 5-layer safety guardrails, and a FastAPI + Next.js 15 production stack with Sentry distributed tracing.</p>
+                    <div class="tech-pills"><span class="tech-pill">RAG</span><span class="tech-pill">ChromaDB</span><span class="tech-pill">BM25</span><span class="tech-pill">Cross-Encoder</span><span class="tech-pill">FastAPI</span><span class="tech-pill">Next.js 15</span><span class="tech-pill">Sentry</span></div>
+                    <div class="project-links">
+                        <a href="https://github.com/IbrahimAbdelsattar/Eva-AI" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://youtu.be/0yi4tz0HBBI" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Demo Video</a>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/0yi4tz0HBBI?rel=0" title="EVA-AI Demo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
 
                 <!-- Fact Forge -->
                 <div class="project-card">
-                    <div class="icon" aria-hidden="true">⚡</div>
-                    <h3>Fact Forge</h3>
-                    <p>
-                        An end-to-end AI-powered platform for real-time fact-checking and claim verification.
-                        Built using state-of-the-art <strong>NLP</strong> and deep learning techniques. Fully deployed for interactive testing.
-                    </p>
+                    <div class="icon">&#128240;</div>
+                    <h3>Fact Forge &mdash; Automated Misinformation &amp; Fake News Detection</h3>
+                    <p>Built an end-to-end fake news detection pipeline achieving 95.6% classification accuracy on the WELFake dataset (72,000 news records). Fine-tuned DeBERTa-v3 transformer with custom weight decay and dropout regularization, served via RESTful Flask API integrated with a responsive React (Vite) dashboard for real-time news credibility scoring.</p>
+                    <div class="tech-pills"><span class="tech-pill">DeBERTa-v3</span><span class="tech-pill">Fine-Tuning</span><span class="tech-pill">Flask</span><span class="tech-pill">React</span><span class="tech-pill">Vite</span></div>
                     <div class="project-links">
-                        <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Repository</a>
-                        <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle" aria-hidden="true"></i> Demo Video</a>
+                        <a href="https://github.com/YusufAbozeid/Fact-Forge" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://youtu.be/Cqy3H0qDnRo" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Demo Video</a>
                     </div>
                     <div class="video-wrapper">
-                        <iframe
-                        src="https://www.youtube.com/embed/Cqy3H0qDnRo?rel=0"
-                        title="Fact Forge Demo"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                        </iframe>
+                        <iframe src="https://www.youtube.com/embed/Cqy3H0qDnRo?rel=0" title="Fact Forge Demo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <!-- Mesdaq AI -->
                 <div class="project-card">
-                    <div class="icon" aria-hidden="true">🧠</div>
-                    <h3>Mesdaq AI</h3>
-                    <p>
-                        An Arabic fake news detection engine powered by <strong>AraBERT</strong>.
-                        Leverages deep linguistic analysis to combat misinformation across the Arab world.
-                    </p>
-                    <div class="collab"><i class="fas fa-users" aria-hidden="true"></i> Collaborated with Ibrahim Abdelsattar</div>
+                    <div class="icon">&#127760;</div>
+                    <h3>Mesdaq AI &mdash; Arabic Misinformation Classification System</h3>
+                    <p>Fine-tuned AraBERT transformer model to accurately classify Arabic digital news articles and combat misinformation across the Arab world. Designed a specialized Arabic NLP preprocessing pipeline handling morphological complexity, diacritics, and normalization for robust real-time semantic analysis.</p>
+                    <div class="tech-pills"><span class="tech-pill">AraBERT</span><span class="tech-pill">Arabic NLP</span><span class="tech-pill">Transformers</span><span class="tech-pill">Fine-Tuning</span></div>
                     <div class="project-links">
-                        <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank" rel="noopener"><i class="fab fa-github" aria-hidden="true"></i> Repository</a>
+                        <a href="https://github.com/IbrahimAbdelsattar/Mesdaq_AI" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+                        <a href="https://youtu.be/makl7tmGfM8" class="live" target="_blank" rel="noopener"><i class="fas fa-play-circle"></i> Demo Video</a>
+                    </div>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/makl7tmGfM8?rel=0" title="Mesdaq AI Demo" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <!-- ========== LEADERSHIP ========== -->
+        <!-- CERTIFICATIONS -->
         <section class="fade-up">
-            <h2><i class="fas fa-trophy" aria-hidden="true"></i> Leadership</h2>
-            <div class="leadership-box">
-                <h3><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> GDG FUE Campus Co-organizer</h3>
-                <p>
-                    Co-organized and facilitated technical events for <strong>Google Developer Groups</strong>
-                    at Future University. Bridged the gap between academic knowledge and industry practices by introducing students to modern AI stacks, cloud computing, and collaborative workflows.
-                </p>
-            </div>
-        </section>
-
-        <!-- ========== CONTACT ========== -->
-        <section class="fade-up">
-            <h2><i class="fas fa-paper-plane" aria-hidden="true"></i> Get In Touch</h2>
-            <div class="contact-box">
-                <p>Open to AI/ML roles, collaborations, and interesting problems. Feel free to reach out.</p>
-                <div class="contact-links">
-                    <a class="primary" href="mailto:yusuf.abozeid@gmail.com">
-                        <i class="fas fa-envelope" aria-hidden="true"></i> Email Me
-                    </a>
-                    <a class="secondary" href="https://www.linkedin.com/in/yusufabozeid" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin-in" aria-hidden="true"></i> Connect on LinkedIn
-                    </a>
+            <h2><i class="fas fa-certificate"></i> Certifications</h2>
+            <div class="certs-grid">
+                <div class="cert-card">
+                    <h3><i class="fas fa-graduation-cap" style="color:#00c7b7;margin-right:6px"></i> NVIDIA DLI &mdash; Generative AI &amp; Deep Learning</h3>
+                    <p class="cert-org"><i class="fas fa-building"></i> Information Technology Institute (ITI)</p>
+                    <p class="cert-detail">Prompt Engineering, LLM Application Development, RAG Systems &mdash; 35 Hours Intensive Program</p>
+                </div>
+                <div class="cert-card">
+                    <h3><i class="fas fa-shield-alt" style="color:#00c7b7;margin-right:6px"></i> Responsible &amp; Trustworthy AI</h3>
+                    <p class="cert-org"><i class="fas fa-building"></i> SAS Institute</p>
+                    <p class="cert-detail">Ethical AI frameworks, bias detection, explainability, and responsible deployment practices.</p>
+                </div>
+                <div class="cert-card">
+                    <h3><i class="fas fa-briefcase" style="color:#00c7b7;margin-right:6px"></i> AI for Business Specialist</h3>
+                    <p class="cert-org"><i class="fas fa-building"></i> NTI (National Telecommunication Institute)</p>
+                    <p class="cert-detail">Passed with <strong>96% Score</strong> &mdash; AI strategy, business applications, and enterprise deployment.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ========== FOOTER ========== -->
-        <footer>
-            &copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;🚀
-        </footer>
+        <!-- LEADERSHIP -->
+        <section class="fade-up">
+            <h2><i class="fas fa-users"></i> Leadership</h2>
+            <div class="leadership-box">
+                <h3><i class="fas fa-chalkboard-teacher"></i> GDG FUE Campus Co-organizer (2024 &ndash; 2025)</h3>
+                <p>Co-organized and facilitated technical events for <strong>Google Developer Groups</strong> at Future University in Egypt. Organized technical workshops and hackathons on AI/ML for <strong>200+ students</strong>, bridging academic knowledge with industry practices and modern AI stacks.</p>
+            </div>
+        </section>
 
+        <!-- CONTACT -->
+        <section class="fade-up">
+            <h2><i class="fas fa-paper-plane"></i> Get In Touch</h2>
+            <div class="contact-box">
+                <p>Open to AI/ML engineering roles, embedded systems collaborations, and challenging real-world problems. Let's build something extraordinary.</p>
+                <div class="contact-links">
+                    <a class="primary" href="mailto:yusuf.abozeid@gmail.com"><i class="fas fa-envelope"></i> Email Me</a>
+                    <a class="secondary" href="https://www.linkedin.com/in/yusufabozeid" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i> Connect on LinkedIn</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>&copy; 2026 <span>Yusuf Abozeid</span> &mdash; Crafted for Innovation &nbsp;&#128640;</footer>
     </div>
-    <!-- /container -->
 
-    <!-- ========== SCRIPTS ========== -->
     <script>
-        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-        // ----- 1. TYPING EFFECT -----
-        const typedTextElement = document.getElementById('typed-text');
-        const roles = [
-            'AI Developer',
-            'Generative AI Engineer',
-            'NLP & Computer Vision Specialist',
-            'LLM Application Developer',
-            'Open Source Contributor'
-        ];
-
-        if (prefersReducedMotion) {
-            // Show a single static role instead of animating
-            typedTextElement.textContent = roles[0];
-        } else {
-            let roleIndex = 0;
-            let charIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 120;
-
-            function typeEffect() {
-                const currentRole = roles[roleIndex];
-                if (!isDeleting) {
-                    typedTextElement.textContent = currentRole.substring(0, charIndex + 1);
-                    charIndex++;
-                    if (charIndex === currentRole.length) {
-                        isDeleting = true;
-                        typingSpeed = 2000;
-                    } else {
-                        typingSpeed = 80 + Math.random() * 60;
-                    }
-                } else {
-                    typedTextElement.textContent = currentRole.substring(0, charIndex);
-                    charIndex--;
-                    if (charIndex < 0) {
-                        isDeleting = false;
-                        roleIndex = (roleIndex + 1) % roles.length;
-                        typingSpeed = 200;
-                    } else {
-                        typingSpeed = 40 + Math.random() * 40;
-                    }
-                }
-                setTimeout(typeEffect, typingSpeed);
-            }
-            window.addEventListener('load', typeEffect);
-        }
-
-        // ----- 2. SCROLL ANIMATIONS -----
-        const fadeElements = document.querySelectorAll('.fade-up');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
-
-        fadeElements.forEach(el => observer.observe(el));
-
-        // ----- 3 & 4. BACKGROUND / CURSOR EFFECTS (skipped if reduced motion) -----
-        if (!prefersReducedMotion) {
-            const orb1 = document.getElementById('orb1');
-            const orb2 = document.getElementById('orb2');
-            const orb3 = document.getElementById('orb3');
-            const bgGradient = document.getElementById('bg-gradient');
-
-            let lastScrollY = 0;
-            let ticking = false;
-
-            window.addEventListener('scroll', () => {
-                lastScrollY = window.scrollY;
-                if (!ticking) {
-                    window.requestAnimationFrame(() => {
-                        const scrollY = lastScrollY;
-                        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-                        const progress = Math.min(scrollY / Math.max(maxScroll, 1), 1);
-
-                        orb1.style.transform = `translate(${scrollY * 0.02}px, ${scrollY * 0.04}px) scale(${1 + progress * 0.05})`;
-                        orb2.style.transform = `translate(${-scrollY * 0.03}px, ${-scrollY * 0.06}px) scale(${1 + progress * 0.08})`;
-                        orb3.style.transform = `translate(${scrollY * 0.015}px, ${scrollY * 0.08}px) scale(${1 + progress * 0.04})`;
-
-                        const r1 = 0 + progress * 50;
-                        const g1 = 199 - progress * 60;
-                        const b1 = 183 - progress * 40;
-                        const r2 = 79 + progress * 80;
-                        const g2 = 172 - progress * 40;
-                        const b2 = 254 - progress * 60;
-                        const r3 = 168 - progress * 40;
-                        const g3 = 85 + progress * 30;
-                        const b3 = 247 + progress * 8;
-
-                        bgGradient.style.background = `
-                                    radial-gradient(circle at 20% 30%, rgba(${r1}, ${g1}, ${b1}, 0.1), transparent 50%),
-                                    radial-gradient(circle at 80% 70%, rgba(${r2}, ${g2}, ${b2}, 0.12), transparent 50%),
-                                    radial-gradient(circle at 40% 80%, rgba(${r3}, ${g3}, ${b3}, 0.08), transparent 50%)
-                                `;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-
-            // Cursor glow now driven by `transform`, matching the CSS transition
-            // (previously set left/top directly, which the transition never covered
-            // and which forces a layout reflow on every mousemove).
-            const cursorGlow = document.getElementById('cursor-glow');
-            document.addEventListener('mousemove', (e) => {
-                cursorGlow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-            });
-        }
+        const prefersReducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const typedTextElement=document.getElementById('typed-text');
+        const roles=['AI & Embedded Systems Engineer','Edge AI & IoT Architect','NLP & LLM Specialist','Hackathon Champion \ud83e\udd47','Open Source Builder'];
+        if(prefersReducedMotion){typedTextElement.textContent=roles[0]}else{let roleIndex=0,charIndex=0,isDeleting=false,typingSpeed=120;function typeEffect(){const currentRole=roles[roleIndex];if(!isDeleting){typedTextElement.textContent=currentRole.substring(0,charIndex+1);charIndex++;if(charIndex===currentRole.length){isDeleting=true;typingSpeed=2000}else{typingSpeed=80+Math.random()*60}}else{typedTextElement.textContent=currentRole.substring(0,charIndex);charIndex--;if(charIndex<0){isDeleting=false;roleIndex=(roleIndex+1)%roles.length;typingSpeed=200}else{typingSpeed=40+Math.random()*40}}setTimeout(typeEffect,typingSpeed)}window.addEventListener('load',typeEffect)}
+        const fadeElements=document.querySelectorAll('.fade-up');const observer=new IntersectionObserver(e=>{e.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('visible')})},{threshold:.15,rootMargin:'0px 0px -20px 0px'});fadeElements.forEach(el=>observer.observe(el));
+        if(!prefersReducedMotion){const orb1=document.getElementById('orb1'),orb2=document.getElementById('orb2'),orb3=document.getElementById('orb3'),bgGradient=document.getElementById('bg-gradient');let lastScrollY=0,ticking=false;window.addEventListener('scroll',()=>{lastScrollY=window.scrollY;if(!ticking){window.requestAnimationFrame(()=>{const scrollY=lastScrollY,maxScroll=document.documentElement.scrollHeight-window.innerHeight,progress=Math.min(scrollY/Math.max(maxScroll,1),1);orb1.style.transform=`translate(${scrollY*.02}px,${scrollY*.04}px) scale(${1+progress*.05})`;orb2.style.transform=`translate(${-scrollY*.03}px,${-scrollY*.06}px) scale(${1+progress*.08})`;orb3.style.transform=`translate(${scrollY*.015}px,${scrollY*.08}px) scale(${1+progress*.04})`;const r1=0+progress*50,g1=199-progress*60,b1=183-progress*40,r2=79+progress*80,g2=172-progress*40,b2=254-progress*60,r3=168-progress*40,g3=85+progress*30,b3=247+progress*8;bgGradient.style.background=`radial-gradient(circle at 20% 30%,rgba(${r1},${g1},${b1},.1),transparent 50%),radial-gradient(circle at 80% 70%,rgba(${r2},${g2},${b2},.12),transparent 50%),radial-gradient(circle at 40% 80%,rgba(${r3},${g3},${b3},.08),transparent 50%)`;ticking=false});ticking=true}});const cursorGlow=document.getElementById('cursor-glow');document.addEventListener('mousemove',e=>{cursorGlow.style.transform=`translate(${e.clientX}px,${e.clientY}px) translate(-50%,-50%)`})}
     </script>
-
 </body>
 </html>
