@@ -4,7 +4,7 @@
   <img src="https://github.com/user-attachments/assets/e034b63e-6180-4c28-9953-9c156ee6050a" alt="Yusuf Abozeid" width="160" style="border-radius: 50%;" />
 </p>
 
-# Yusuf Adel Abouzeid
+# Yusuf Abozeid
 
 **AI & Embedded Systems Engineer | NLP, LLM & Edge AI Specialist**  
 📍 Giza, Egypt | 📧 [yusuf.abozeid@gmail.com](mailto:yusuf.abozeid@gmail.com)
@@ -22,7 +22,7 @@
 
 High-impact **AI & Embedded Systems Engineer** specializing in Natural Language Processing (NLP), Large Language Models (LLMs), and Edge AI. 
 
-- 🥇 **1st Place Winner** at the National AI Hackathon for engineering **EVA-AI**, a zero-hallucination Clinical Decision Support RAG platform.
+- 🥇 **1st Place** at the National AI Hackathon 2026 (ODC, CREATIVA, ITIDA, TIEC & INSTANT) with **EVA-AI**, an evidence-grounded Clinical Decision Support RAG platform — plus the **Best Participant Award**.
 - 🏆 **Top 6 National Finalist** at RoboDam 2026 for building **RoboApex**, an autonomous ESP-NOW microgrid gateway with embedded neural cortex.
 - Certified by **NVIDIA DLI** and **ITI** in Generative AI and LLM applications.
 
@@ -33,7 +33,7 @@ High-impact **AI & Embedded Systems Engineer** specializing in Natural Language 
 | Honor / Award | Issuing Organization | Date | Description |
 |:---|:---|:---:|:---|
 | **Top 6 National Finalist** | Damanhour University & ITI | Sep 2026 | Selected among TOP 6 standout projects across Egypt (out of 65 university teams) to present RoboApex live before H.E. Minister of Higher Education. |
-| **1st Place Winner** | Orange Digital Center, CREATIVA, ITIDA, TIEC & INSTANT | Aug 2026 | 1st Place champion for developing EVA-AI zero-hallucination Clinical Decision Support platform with hybrid search & safety guardrails. |
+| **1st Place · Best Participant Award** | Orange Digital Center, CREATIVA, ITIDA, TIEC & INSTANT | Aug 2026 | 1st place with EVA-AI (Certificate of Excellence for the top 5 teams, score 95.5), an evidence-grounded Clinical Decision Support platform with hybrid search & safety guardrails. |
 
 ---
 
@@ -62,9 +62,9 @@ High-impact **AI & Embedded Systems Engineer** specializing in Natural Language 
 
 ---
 
-### 🏥 [EVA-AI — Zero-Hallucination Clinical Decision Support Platform](https://github.com/IbrahimAbdelsattar/Eva-AI)
-> **🥇 1st Place Champion — National AI Hackathon 2026**  
-> Clinical Decision Support RAG system over official medical guidelines (NICE NG243) achieving ≥80% Hit-Rate and ≥0.82 Precision@K. Dual-engine hybrid retrieval (Dense + BM25 + Cross-Encoder) with 5-layer safety guardrails and sub-3ms drug refusal.
+### 🏥 [EVA-AI — Evidence-Grounded Clinical Decision Support Platform](https://github.com/IbrahimAbdelsattar/Eva-AI)
+> **🥇 1st Place · Best Participant Award — National AI Hackathon 2026**  
+> Clinical Decision Support RAG system over official medical guidelines (NICE NG243) achieving ≥80% Hit-Rate and ≥0.82 Precision@K on an 18-query benchmark. Dual-engine hybrid retrieval (Dense + BM25 + Cross-Encoder) with 5-layer safety guardrails and sub-3ms drug refusal.
 
 [![Repository](https://img.shields.io/badge/Repository-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/IbrahimAbdelsattar/Eva-AI)
 [![Demo Video](https://img.shields.io/badge/YouTube_Demo-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://youtu.be/0yi4tz0HBBI)
